@@ -1,0 +1,15 @@
+query Pages {
+    pages {
+        title
+        meta {
+            keywords
+            image {
+                url
+            }
+            description
+        }
+        content
+        type
+        slug
+    }
+}

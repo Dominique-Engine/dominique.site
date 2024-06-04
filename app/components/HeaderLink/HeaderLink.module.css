@@ -1,0 +1,23 @@
+.link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    padding: calc(var(--v-gap) / 2) var(--h-gap);
+    color: var(--color-text);
+    transition: color var(--anim-duration);
+}
+
+.link.active {
+    font-weight: 600;
+}
+
+.link:hover {
+    color: var(--brand-color-yellow);
+    text-decoration: none;
+}
+
+.link:hover:not([aria-disabled="true"]),
+.a:hover:not([aria-disabled="true"]) {
+    text-decoration: none;
+}

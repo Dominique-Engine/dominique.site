@@ -1,0 +1,2 @@
+schema: ${API_URL}
+documents: "**/*.{graphql,ts,tsx}"

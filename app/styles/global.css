@@ -1,0 +1,25 @@
+body {
+    background-color: var(--color-bg);
+}
+
+.main-content {
+    margin: auto;
+    padding-bottom: 20px;
+    max-width: var(--max-width);
+}
+
+main {
+    min-height: 100vh;
+}
+
+a {
+    color: var(--color-text);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:hover:not([aria-disabled="true"]) {
+    text-decoration: none;
+}
