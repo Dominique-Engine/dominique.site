@@ -3,7 +3,8 @@ import {LoaderFunctionArgs} from "@remix-run/router";
 import Markdown from "react-markdown";
 import {sdk} from "~/graphql/client";
 import {BlogPost} from "~/components/BlogPost";
-import {Code} from "~/components/Code";
+import rehypeRaw from "rehype-raw";
+import rehypeHighlight from "rehype-highlight";
 import styles from "~/styles/blogpost.module.css";
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
@@ -41,7 +42,7 @@ export default function About() {
                     pubDate={new Date(data.createdAt)}
                 >
                     {data.content && (
-                        <Markdown components={{code: Code}}>
+                        <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
                             {data.content}
                         </Markdown>
                     )}

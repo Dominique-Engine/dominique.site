@@ -19,6 +19,8 @@ import "~/styles/global.css";
 import "~/styles/typography.css";
 import "~/styles/vars.css";
 
+import "highlight.js/styles/atom-one-dark.css";
+
 export const links: LinksFunction = () => [];
 
 export const meta: MetaFunction = () => {

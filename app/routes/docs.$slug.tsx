@@ -2,10 +2,11 @@ import {useLoaderData} from "@remix-run/react";
 import {LoaderFunctionArgs} from "@remix-run/router";
 import Markdown from "react-markdown";
 import {sdk} from "~/graphql/client";
-import {Code} from "~/components/Code";
 import styles from "~/styles/docentry.module.css";
 import {useRouteError} from "react-router";
 import {ErrorResponseImpl} from "@remix-run/router/utils";
+import rehypeRaw from "rehype-raw";
+import rehypeHighlight from "rehype-highlight";
 
 export async function loader({params}: LoaderFunctionArgs) {
     if (!params.slug) {
@@ -25,7 +26,9 @@ export default function About() {
     return (
         <section className={styles.section}>
             {data.content && (
-                <Markdown components={{code: Code}}>{data.content}</Markdown>
+                <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
+                    {data.content}
+                </Markdown>
             )}
         </section>
     );

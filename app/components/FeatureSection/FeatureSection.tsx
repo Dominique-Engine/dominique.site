@@ -1,8 +1,9 @@
 import styles from "./FeatureSection.module.css";
-import {Code} from "~/components/Code";
 import Markdown from "react-markdown";
 import {TextWithHighlights} from "~/components/TextWithHighlights";
 import {CSSProperties} from "react";
+import rehypeRaw from "rehype-raw";
+import rehypeHighlight from "rehype-highlight";
 
 interface FeatureSectionProps {
     title: string;
@@ -32,7 +33,9 @@ export function FeatureSection({
                     <p className={styles.description}>{description}</p>
                 </div>
                 <div className={styles.right}>
-                    <Markdown components={{code: Code}}>{code}</Markdown>
+                    <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
+                        {code}
+                    </Markdown>
                 </div>
             </div>
         </section>
