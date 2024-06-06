@@ -5590,6 +5590,28 @@ export type BlogPostsQuery = {
     }>;
 };
 
+export type BlogPostQueryVariables = Exact<{
+    slug: Scalars["String"]["input"];
+}>;
+
+export type BlogPostQuery = {
+    __typename?: "Query";
+    page?: {
+        __typename?: "Page";
+        id: string;
+        title: string;
+        slug: string;
+        content?: string | null;
+        createdAt: any;
+        meta?: {
+            __typename?: "Meta";
+            description?: string | null;
+            keywords: Array<string>;
+            image?: {__typename?: "Asset"; url: string} | null;
+        } | null;
+    } | null;
+};
+
 export type DocEntriesQueryVariables = Exact<{[key: string]: never}>;
 
 export type DocEntriesQuery = {
@@ -5668,6 +5690,24 @@ export const BlogPostsDocument = gql`
         }
     }
 `;
+export const BlogPostDocument = gql`
+    query BlogPost($slug: String!) {
+        page(where: {slug: $slug}) {
+            id
+            title
+            slug
+            content
+            meta {
+                image {
+                    url
+                }
+                description
+                keywords
+            }
+            createdAt
+        }
+    }
+`;
 export const DocEntriesDocument = gql`
     query DocEntries {
         pages(where: {type: DocEntry}, orderBy: createdAt_DESC) {
@@ -5735,6 +5775,7 @@ const defaultWrapper: SdkFunctionWrapper = (
     _variables
 ) => action();
 const BlogPostsDocumentString = print(BlogPostsDocument);
+const BlogPostDocumentString = print(BlogPostDocument);
 const DocEntriesDocumentString = print(DocEntriesDocument);
 const FeaturesDocumentString = print(FeaturesDocument);
 const PagesDocumentString = print(PagesDocument);
@@ -5762,6 +5803,28 @@ export function getSdk(
                         {...requestHeaders, ...wrappedRequestHeaders}
                     ),
                 "BlogPosts",
+                "query",
+                variables
+            );
+        },
+        BlogPost(
+            variables: BlogPostQueryVariables,
+            requestHeaders?: GraphQLClientRequestHeaders
+        ): Promise<{
+            data: BlogPostQuery;
+            errors?: GraphQLError[];
+            extensions?: any;
+            headers: Headers;
+            status: number;
+        }> {
+            return withWrapper(
+                wrappedRequestHeaders =>
+                    client.rawRequest<BlogPostQuery>(
+                        BlogPostDocumentString,
+                        variables,
+                        {...requestHeaders, ...wrappedRequestHeaders}
+                    ),
+                "BlogPost",
                 "query",
                 variables
             );

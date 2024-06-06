@@ -12,3 +12,20 @@ query BlogPosts {
         createdAt
     }
 }
+
+query BlogPost($slug: String!) {
+    page(where: {slug: $slug}) {
+        id
+        title
+        slug
+        content
+        meta {
+            image {
+                url
+            }
+            description
+            keywords
+        }
+        createdAt
+    }
+}
