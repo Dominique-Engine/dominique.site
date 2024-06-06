@@ -12,7 +12,7 @@ export function NavBar() {
                     </HeaderLink>
                 </div>
                 <div className={styles.links}>
-                    <HeaderLink to="/doc">Doc</HeaderLink>
+                    <HeaderLink to="/docs">Doc</HeaderLink>
                     <HeaderLink to="/blog">Blog</HeaderLink>
                     <HeaderLink to="/playground">Playground</HeaderLink>
                 </div>

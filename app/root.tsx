@@ -12,8 +12,6 @@ import {Footer} from "~/components/Footer";
 import {LinksFunction} from "@remix-run/server-runtime";
 import type {MetaFunction} from "@remix-run/node";
 import {SITE_DESCRIPTION, SITE_TITLE} from "~/constants/client";
-import {useRouteError} from "react-router";
-import {ErrorResponseImpl} from "@remix-run/router/utils";
 import {sdk} from "~/graphql/client";
 
 import "~/styles/reset.css";
@@ -35,11 +33,11 @@ export async function loader() {
     if (data.errors || !data.data) {
         throw new Response(`Not found`, {status: 404});
     }
-    return {data: data.data.socialNetworks};
+    return data.data.socialNetworks;
 }
 
 export function Layout({children}: {children: ReactNode}) {
-    const {data} = useLoaderData<typeof loader>();
+    const data = useLoaderData<typeof loader>();
     return (
         <html lang="en" data-theme="light">
             <head>
@@ -66,21 +64,12 @@ export function Layout({children}: {children: ReactNode}) {
                 <NavBar />
                 {children}
                 <Footer
-                    github={data.find(el => el.platform === "github")?.url}
+                    github={data?.find(el => el.platform === "github")?.url}
                 />
                 <ScrollRestoration />
                 <Scripts />
             </body>
         </html>
-    );
-}
-
-export function ErrorBoundary() {
-    const error = useRouteError();
-    return (
-        <main className="main-content">
-            <h1>{(error as ErrorResponseImpl).data}</h1>
-        </main>
     );
 }
 
