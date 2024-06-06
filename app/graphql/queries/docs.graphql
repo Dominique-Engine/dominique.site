@@ -1,0 +1,14 @@
+query DocEntries {
+    pages(where: {type: DocEntry}, orderBy: createdAt_DESC) {
+        id
+        title
+        slug
+        meta {
+            image {
+                url
+            }
+            description
+        }
+        createdAt
+    }
+}
