@@ -4,6 +4,8 @@ import Markdown from "react-markdown";
 import {sdk} from "~/graphql/client";
 import {Code} from "~/components/Code";
 import styles from "~/styles/docentry.module.css";
+import {useRouteError} from "react-router";
+import {ErrorResponseImpl} from "@remix-run/router/utils";
 
 export async function loader({params}: LoaderFunctionArgs) {
     if (!params.slug) {
@@ -26,5 +28,16 @@ export default function About() {
                 <Markdown components={{code: Code}}>{data.content}</Markdown>
             )}
         </section>
+    );
+}
+
+export function ErrorBoundary() {
+    const error = useRouteError();
+    return (
+        <main className="main-content">
+            <section className={styles.section}>
+                <h1>{(error as ErrorResponseImpl).data}</h1>
+            </section>
+        </main>
     );
 }
