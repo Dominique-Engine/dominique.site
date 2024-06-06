@@ -1,61 +1,46 @@
-.img {
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.image {
     border-radius: var(--border-radius);
     object-fit: cover;
     object-position: center center;
-    height: 200px;
-    width: 280px;
+    max-height: 200px;
+    width: 100%;
     transition: filter 0.2s;
-    position: absolute;
-    z-index: 100;
-    top: 0;
+    filter: grayscale(100%);
 }
 
-.description {
-    max-width: 500px;
-}
-
-.title {
-    display: flex;
-    gap: 10px;
-    margin: 0;
-    align-items: center;
-}
-
-.noPointer {
-    cursor: default !important;
-}
-
-.cardType {
-    font-size: 0.8rem;
-    margin-right: 2px;
+.image:hover {
+    filter: grayscale(0%);
 }
 
 .details {
-    gap: calc(var(--v-gap) / 2);
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--v-gap);
 }
 
-.timeCol {
-    width: 100px;
+.description {
+    line-height: 1.2;
+}
+
+.title {
+    color: var(--brand-color-red);
+    font-size: 25px;
+    line-height: 1.2;
+    transition: color var(--anim-duration) var(--cool-easing);
+}
+
+.title:hover {
+    color: var(--brand-color-yellow);
+}
+
+.time {
     @media (width >= 768px) {
         text-align: right;
     }
-}
-
-.externalLink {
-    padding: 0 calc(var(--h-gap) / 2);
-    margin-left: calc(var(--h-gap) / -2);
-}
-
-.externalLink:hover {
-    background-color: transparent;
-}
-
-.externalLink {
-    transition: all var(--anim-duration) ease-in-out;
-}
-
-.externalLink:hover {
-    transform: scale(1.7);
-    color: var(--color-text) !important;
 }

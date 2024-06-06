@@ -19,14 +19,22 @@ export function BlogCard({
 }: BlogCardProps) {
     return (
         <div className={styles.container}>
-            {image && <img className={styles.image} src={image} alt="" />}
-            <div className={styles.timeCol}>
+            {image && (
+                <Link
+                    unstable_viewTransition
+                    className={styles.title}
+                    to={`/blog/${slug}`}
+                >
+                    <img className={styles.image} src={image} alt="" />
+                </Link>
+            )}
+            <div className={styles.time}>
                 <FormattedDate date={date} />
             </div>
             <div className={styles.details}>
                 <Link
                     unstable_viewTransition
-                    className={`slide-bg-hover ${styles.title}`}
+                    className={styles.title}
                     to={`/blog/${slug}`}
                 >
                     {title}
