@@ -5630,6 +5630,15 @@ export type DocEntriesQuery = {
     }>;
 };
 
+export type DocEntryQueryVariables = Exact<{
+    slug: Scalars["String"]["input"];
+}>;
+
+export type DocEntryQuery = {
+    __typename?: "Query";
+    page?: {__typename?: "Page"; content?: string | null} | null;
+};
+
 export type FeaturesQueryVariables = Exact<{[key: string]: never}>;
 
 export type FeaturesQuery = {
@@ -5724,6 +5733,13 @@ export const DocEntriesDocument = gql`
         }
     }
 `;
+export const DocEntryDocument = gql`
+    query DocEntry($slug: String!) {
+        page(where: {slug: $slug}) {
+            content
+        }
+    }
+`;
 export const FeaturesDocument = gql`
     query Features {
         features {
@@ -5777,6 +5793,7 @@ const defaultWrapper: SdkFunctionWrapper = (
 const BlogPostsDocumentString = print(BlogPostsDocument);
 const BlogPostDocumentString = print(BlogPostDocument);
 const DocEntriesDocumentString = print(DocEntriesDocument);
+const DocEntryDocumentString = print(DocEntryDocument);
 const FeaturesDocumentString = print(FeaturesDocument);
 const PagesDocumentString = print(PagesDocument);
 const SocialNetworksDocumentString = print(SocialNetworksDocument);
@@ -5847,6 +5864,28 @@ export function getSdk(
                         {...requestHeaders, ...wrappedRequestHeaders}
                     ),
                 "DocEntries",
+                "query",
+                variables
+            );
+        },
+        DocEntry(
+            variables: DocEntryQueryVariables,
+            requestHeaders?: GraphQLClientRequestHeaders
+        ): Promise<{
+            data: DocEntryQuery;
+            errors?: GraphQLError[];
+            extensions?: any;
+            headers: Headers;
+            status: number;
+        }> {
+            return withWrapper(
+                wrappedRequestHeaders =>
+                    client.rawRequest<DocEntryQuery>(
+                        DocEntryDocumentString,
+                        variables,
+                        {...requestHeaders, ...wrappedRequestHeaders}
+                    ),
+                "DocEntry",
                 "query",
                 variables
             );

@@ -1,0 +1,8 @@
+.section {
+    padding: 0 var(--h-gap-l);
+    scroll-snap-align: start;
+}
+
+.section li {
+    list-style: unset;
+}

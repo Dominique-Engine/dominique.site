@@ -12,3 +12,9 @@ query DocEntries {
         createdAt
     }
 }
+
+query DocEntry($slug: String!) {
+    page(where: {slug: $slug}) {
+        content
+    }
+}

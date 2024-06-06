@@ -2,6 +2,15 @@ import {sdk} from "~/graphql/client";
 import {useLoaderData} from "@remix-run/react";
 import {BlogCard} from "~/components/BlogCard";
 import styles from "~/styles/blogs.module.css";
+import type {MetaFunction} from "@remix-run/node";
+import {BLOG_DESCRIPTION, BLOG_TITLE} from "~/constants/client";
+
+export const meta: MetaFunction = () => {
+    return [
+        {title: BLOG_TITLE},
+        {name: "description", content: BLOG_DESCRIPTION},
+    ];
+};
 
 export async function loader() {
     const data = await sdk.BlogPosts();
