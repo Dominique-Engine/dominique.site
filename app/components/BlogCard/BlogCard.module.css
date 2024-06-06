@@ -1,0 +1,61 @@
+.img {
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    object-position: center center;
+    height: 200px;
+    width: 280px;
+    transition: filter 0.2s;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+}
+
+.description {
+    max-width: 500px;
+}
+
+.title {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    align-items: center;
+}
+
+.noPointer {
+    cursor: default !important;
+}
+
+.cardType {
+    font-size: 0.8rem;
+    margin-right: 2px;
+}
+
+.details {
+    gap: calc(var(--v-gap) / 2);
+    position: relative;
+}
+
+.timeCol {
+    width: 100px;
+    @media (width >= 768px) {
+        text-align: right;
+    }
+}
+
+.externalLink {
+    padding: 0 calc(var(--h-gap) / 2);
+    margin-left: calc(var(--h-gap) / -2);
+}
+
+.externalLink:hover {
+    background-color: transparent;
+}
+
+.externalLink {
+    transition: all var(--anim-duration) ease-in-out;
+}
+
+.externalLink:hover {
+    transform: scale(1.7);
+    color: var(--color-text) !important;
+}

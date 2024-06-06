@@ -30,3 +30,7 @@ a:hover:not([aria-disabled="true"]) {
 html {
     scroll-snap-type: y mandatory;
 }
+
+li {
+    list-style: none;
+}

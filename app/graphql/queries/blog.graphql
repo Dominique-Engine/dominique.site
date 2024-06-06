@@ -1,0 +1,14 @@
+query BlogPosts {
+    pages(where: {type: BlogPost}, orderBy: createdAt_DESC) {
+        id
+        title
+        slug
+        meta {
+            image {
+                url
+            }
+            description
+        }
+        createdAt
+    }
+}

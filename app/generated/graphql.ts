@@ -5572,6 +5572,24 @@ export enum _SystemDateTimeFieldVariation {
     Localization = "localization",
 }
 
+export type BlogPostsQueryVariables = Exact<{[key: string]: never}>;
+
+export type BlogPostsQuery = {
+    __typename?: "Query";
+    pages: Array<{
+        __typename?: "Page";
+        id: string;
+        title: string;
+        slug: string;
+        createdAt: any;
+        meta?: {
+            __typename?: "Meta";
+            description?: string | null;
+            image?: {__typename?: "Asset"; url: string} | null;
+        } | null;
+    }>;
+};
+
 export type FeaturesQueryVariables = Exact<{[key: string]: never}>;
 
 export type FeaturesQuery = {
@@ -5616,6 +5634,22 @@ export type SocialNetworksQuery = {
     }>;
 };
 
+export const BlogPostsDocument = gql`
+    query BlogPosts {
+        pages(where: {type: BlogPost}, orderBy: createdAt_DESC) {
+            id
+            title
+            slug
+            meta {
+                image {
+                    url
+                }
+                description
+            }
+            createdAt
+        }
+    }
+`;
 export const FeaturesDocument = gql`
     query Features {
         features {
@@ -5666,6 +5700,7 @@ const defaultWrapper: SdkFunctionWrapper = (
     _operationType,
     _variables
 ) => action();
+const BlogPostsDocumentString = print(BlogPostsDocument);
 const FeaturesDocumentString = print(FeaturesDocument);
 const PagesDocumentString = print(PagesDocument);
 const SocialNetworksDocumentString = print(SocialNetworksDocument);
@@ -5674,6 +5709,28 @@ export function getSdk(
     withWrapper: SdkFunctionWrapper = defaultWrapper
 ) {
     return {
+        BlogPosts(
+            variables?: BlogPostsQueryVariables,
+            requestHeaders?: GraphQLClientRequestHeaders
+        ): Promise<{
+            data: BlogPostsQuery;
+            errors?: GraphQLError[];
+            extensions?: any;
+            headers: Headers;
+            status: number;
+        }> {
+            return withWrapper(
+                wrappedRequestHeaders =>
+                    client.rawRequest<BlogPostsQuery>(
+                        BlogPostsDocumentString,
+                        variables,
+                        {...requestHeaders, ...wrappedRequestHeaders}
+                    ),
+                "BlogPosts",
+                "query",
+                variables
+            );
+        },
         Features(
             variables?: FeaturesQueryVariables,
             requestHeaders?: GraphQLClientRequestHeaders
