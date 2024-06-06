@@ -1,0 +1,15 @@
+.highlight1 {
+    color: var(--brand-color-red);
+}
+
+.highlight2 {
+    color: var(--brand-color-blue);
+}
+
+.highlight3 {
+    color: var(--brand-color-yellow);
+}
+
+.highlight4 {
+    color: var(--brand-color-green);
+}

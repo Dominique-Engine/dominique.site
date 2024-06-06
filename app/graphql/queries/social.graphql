@@ -1,0 +1,6 @@
+query SocialNetworks {
+    socialNetworks {
+        url
+        platform
+    }
+}

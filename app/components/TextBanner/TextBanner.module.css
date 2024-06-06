@@ -1,0 +1,26 @@
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: var(--v-gap-l) 0;
+    min-height: 100vh;
+    scroll-snap-align: center;
+}
+
+.title {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+    max-width: 800px;
+    text-align: center;
+}
+
+.description {
+    max-width: 800px;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}

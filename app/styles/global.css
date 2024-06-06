@@ -1,5 +1,7 @@
 body {
     background-color: var(--color-bg);
+    min-height: 100vh;
+    position: relative;
 }
 
 .main-content {
@@ -22,4 +24,8 @@ a:hover {
 
 a:hover:not([aria-disabled="true"]) {
     text-decoration: none;
+}
+
+html {
+    scroll-snap-type: y mandatory;
 }

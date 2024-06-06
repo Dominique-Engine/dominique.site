@@ -1,9 +1,11 @@
+import {ReactNode} from "react";
 import {
     Links,
     Meta,
     Outlet,
     Scripts,
     ScrollRestoration,
+    useLoaderData,
 } from "@remix-run/react";
 import {NavBar} from "~/components/NavBar";
 import {Footer} from "~/components/Footer";
@@ -12,6 +14,7 @@ import type {MetaFunction} from "@remix-run/node";
 import {SITE_DESCRIPTION, SITE_TITLE} from "~/constants/client";
 import {useRouteError} from "react-router";
 import {ErrorResponseImpl} from "@remix-run/router/utils";
+import {sdk} from "~/graphql/client";
 
 import "~/styles/reset.css";
 import "~/styles/global.css";
@@ -27,7 +30,16 @@ export const meta: MetaFunction = () => {
     ];
 };
 
-export function Layout({children}: {children: React.ReactNode}) {
+export async function loader() {
+    const data = await sdk.SocialNetworks();
+    if (data.errors || !data.data) {
+        throw new Response(`Not found`, {status: 404});
+    }
+    return {data: data.data.socialNetworks};
+}
+
+export function Layout({children}: {children: ReactNode}) {
+    const {data} = useLoaderData<typeof loader>();
     return (
         <html lang="en" data-theme="light">
             <head>
@@ -50,13 +62,12 @@ export function Layout({children}: {children: React.ReactNode}) {
                     rel="stylesheet"
                 />
             </head>
-            <body
-                style={{
-                    minHeight: "100vh",
-                }}
-            >
+            <body>
                 <NavBar />
                 {children}
+                <Footer
+                    github={data.find(el => el.platform === "github")?.url}
+                />
                 <ScrollRestoration />
                 <Scripts />
             </body>

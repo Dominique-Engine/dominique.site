@@ -1,7 +1,9 @@
 query Features {
-    features  {
+    features {
+        id
         title
         content
         description
+        highlights
     }
 }

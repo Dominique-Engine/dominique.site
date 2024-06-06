@@ -1,6 +1,6 @@
 import {ReactNode} from "react";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
-import {base16AteliersulphurpoolLight as style} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {atomDark as style} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 interface CodeProps {
     children?: ReactNode | ReactNode[];
@@ -15,6 +15,7 @@ export function Code({children, className, ...rest}: CodeProps) {
             PreTag="div"
             language={match[1]}
             style={style}
+            wrapLongLines
         >
             {String(children).replace(/\n$/, "")}
         </SyntaxHighlighter>

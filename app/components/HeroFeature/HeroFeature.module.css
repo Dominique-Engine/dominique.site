@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(var(--v-gap-l) * 10) 0;
+    min-height: 100vh;
+    scroll-snap-align: center;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--v-gap) var(--h-gap);
+}
+
+.right {
+    flex: 1;
+}
+
+.title {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.description {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
