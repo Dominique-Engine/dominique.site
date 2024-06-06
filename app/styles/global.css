@@ -16,6 +16,7 @@ main {
 
 a {
     color: var(--color-text);
+    text-decoration: none;
 }
 
 a:hover {

@@ -1,0 +1,18 @@
+.endBanner {
+    scroll-snap-align: end;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+a.seizeIt {
+    display: inline;
+    color: var(--brand-color-red);
+    text-decoration: none;
+    transition: color var(--anim-duration) var(--cool-easing);
+}
+
+a.seizeIt:hover {
+    text-decoration: underline;
+    color: var(--brand-color-yellow);
+}

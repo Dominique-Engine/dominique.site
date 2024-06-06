@@ -31,6 +31,9 @@
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1;
+    @media (max-width: 768px) {
+        font-size: 40px;
+    }
 }
 
 .description {

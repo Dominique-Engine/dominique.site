@@ -1,9 +1,9 @@
 import {sdk} from "~/graphql/client";
-import {useLoaderData} from "@remix-run/react";
+import {useLoaderData, Link} from "@remix-run/react";
 import {HeroFeature} from "~/components/HeroFeature";
 import {FeatureSection} from "~/components/FeatureSection";
 import {TextBanner} from "~/components/TextBanner";
-import {LinkButton} from "~/components/LinkButton";
+import styles from "~/styles/home.module.css";
 
 export async function loader() {
     const data = await sdk.Features();
@@ -54,25 +54,13 @@ export default function Index() {
                     highlights={feature.highlights}
                 />
             ))}
-            <TextBanner
-                title={`Go and seize it`}
-                titleHighlights={["seize it"]}
-                titleStyle={{
-                    fontSize: "100px",
-                }}
-                sectionStyle={{
-                    scrollSnapAlign: "end",
-                }}
-            >
-                <LinkButton
-                    style={{
-                        margin: "50px auto",
-                        fontSize: "30px",
-                    }}
-                    to={"/docs"}
-                >
-                    {"Start learning ->"}
-                </LinkButton>
+            <TextBanner sectionClassName={styles.endBanner}>
+                <p>
+                    Go and{" "}
+                    <Link className={styles.seizeIt} to={"/docs"}>
+                        seize it
+                    </Link>
+                </p>
             </TextBanner>
         </main>
     );

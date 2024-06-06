@@ -10,6 +10,7 @@ interface TextBannerProps {
     sectionStyle?: CSSProperties;
     titleStyle?: CSSProperties;
     children?: ReactElement | ReactElement[];
+    sectionClassName?: string;
 }
 
 export function TextBanner({
@@ -20,9 +21,13 @@ export function TextBanner({
     sectionStyle,
     titleStyle,
     children,
+    sectionClassName,
 }: TextBannerProps) {
     return (
-        <section className={styles.banner} style={sectionStyle}>
+        <section
+            className={`${sectionClassName} ${styles.banner}`}
+            style={sectionStyle}
+        >
             {title && (
                 <div className={styles.title} style={titleStyle}>
                     <TextWithHighlights

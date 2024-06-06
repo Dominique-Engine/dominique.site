@@ -7,21 +7,19 @@ interface CodeProps {
     className?: string;
 }
 
-export function Code({children, className, ...rest}: CodeProps) {
+export function Code({children, className}: CodeProps) {
     const match = /language-(\w+)/.exec(className || "");
     return match ? (
         <SyntaxHighlighter
-            {...rest}
             PreTag="div"
             language={match[1]}
             style={style}
             wrapLongLines
+            wrapLines
         >
             {String(children).replace(/\n$/, "")}
         </SyntaxHighlighter>
     ) : (
-        <code {...rest} className={className}>
-            {children}
-        </code>
+        <code className={className}>{children}</code>
     );
 }
