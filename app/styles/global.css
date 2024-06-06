@@ -28,9 +28,19 @@ a:hover:not([aria-disabled="true"]) {
 }
 
 html {
-    scroll-snap-type: y mandatory;
+    /*scroll-snap-type: y mandatory;*/
 }
 
 li {
     list-style: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.3s;
+}
+
+::view-transition-old(image),
+::view-transition-new(image) {
+    animation-duration: 0.2s;
 }

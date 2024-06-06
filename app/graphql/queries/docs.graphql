@@ -1,5 +1,5 @@
 query DocEntries {
-    pages(where: {type: DocEntry}, orderBy: createdAt_DESC) {
+    pages(where: {type: DocEntry}, orderBy: createdAt_ASC) {
         id
         title
         slug

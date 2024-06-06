@@ -1,5 +1,5 @@
 query BlogPosts {
-    pages(where: {type: BlogPost}, orderBy: createdAt_DESC) {
+    pages(where: {type: BlogPost}, orderBy: createdAt_ASC) {
         id
         title
         slug

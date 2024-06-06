@@ -5676,7 +5676,7 @@ export type SocialNetworksQuery = {
 
 export const BlogPostsDocument = gql`
     query BlogPosts {
-        pages(where: {type: BlogPost}, orderBy: createdAt_DESC) {
+        pages(where: {type: BlogPost}, orderBy: createdAt_ASC) {
             id
             title
             slug
@@ -5710,7 +5710,7 @@ export const BlogPostDocument = gql`
 `;
 export const DocEntriesDocument = gql`
     query DocEntries {
-        pages(where: {type: DocEntry}, orderBy: createdAt_DESC) {
+        pages(where: {type: DocEntry}, orderBy: createdAt_ASC) {
             id
             title
             slug
