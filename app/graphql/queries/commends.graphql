@@ -1,0 +1,7 @@
+query Commends {
+    commends {
+        id
+        content
+        name
+    }
+}

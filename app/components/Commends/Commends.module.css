@@ -1,0 +1,8 @@
+.commends {
+    min-height: 80vh;
+}
+
+.commend {
+    width: fit-content !important;
+    user-select: none;
+}

@@ -1,0 +1,14 @@
+query Landing {
+    features {
+        id
+        title
+        content
+        description
+        highlights
+    }
+    commends {
+        id
+        content
+        name
+    }
+}
