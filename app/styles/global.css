@@ -45,8 +45,17 @@ li {
     animation-duration: 0.2s;
 }
 
+pre {
+    width: 100%;
+}
+
 code {
     font-size: 18px;
     border-radius: 4px;
     padding: var(--v-gap) var(--h-gap);
+    max-width: calc(100vw - var(--h-gap) - var(--h-gap));
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
 }

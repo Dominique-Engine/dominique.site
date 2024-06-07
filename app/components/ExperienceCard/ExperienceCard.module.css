@@ -3,6 +3,10 @@
     background: #1e1e1e;
     padding: 40px;
     width: 500px;
+
+    @media (max-width: 768px) {
+        width: 300px;
+    }
 }
 
 .text {
