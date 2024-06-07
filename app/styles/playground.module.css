@@ -1,4 +1,28 @@
+.main {
+    padding-bottom: 20px;
+}
+
 .section {
-    padding: calc(var(--v-gap-l) * 10) var(--h-gap-l);
+    padding: calc(var(--v-gap-l) * 6) 0;
     scroll-snap-align: start;
+    display: flex;
+    min-height: calc(100vh + calc(var(--v-gap-l) * 6));
+    margin-bottom: 100px;
+}
+
+.editor {
+    flex: 1;
+    border: 2px solid var(--brand-color-yellow);
+    border-radius: 2px;
+}
+
+.result {
+    flex: 1;
+    background: #1e1e1e;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 50px;
+    border-radius: 2px;
+    border: 2px solid var(--brand-color-yellow);
 }

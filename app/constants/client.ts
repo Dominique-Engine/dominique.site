@@ -6,3 +6,6 @@ export const DOC_DESCRIPTION = "An educational first game engine";
 
 export const BLOG_TITLE = "Dominique Blog";
 export const BLOG_DESCRIPTION = "An educational first game engine";
+
+export const PLAYGROUND_TITLE = "Dominique Playground";
+export const PLAYGROUND_DESCRIPTION = "An educational first game engine";
