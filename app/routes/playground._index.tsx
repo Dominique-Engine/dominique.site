@@ -6,6 +6,7 @@ import {PLAYGROUND_DESCRIPTION, PLAYGROUND_TITLE} from "~/constants/client";
 import type {MetaFunction} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 import {extractCode} from "~/utils/code";
+import {redirect} from "@remix-run/router";
 
 export const meta: MetaFunction = () => {
     return [
@@ -15,6 +16,8 @@ export const meta: MetaFunction = () => {
 };
 
 export async function loader() {
+    return redirect("/");
+
     const data = await sdk.Features();
     if (data.errors || !data.data) {
         throw new Response(`Not found`, {status: 404});
