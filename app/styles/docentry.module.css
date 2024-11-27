@@ -6,3 +6,10 @@
 .section li {
     list-style: unset;
 }
+
+.tags {
+    margin-bottom: var(--v-gap-l);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--h-gap) var(--v-gap);
+}

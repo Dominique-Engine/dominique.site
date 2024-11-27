@@ -1,6 +1,6 @@
 .button {
     align-self: stretch;
-    padding: var(--v-gap) var(--h-gap);
+    padding: var(--v-gap) calc(var(--h-gap) * 2);
     border-radius: var(--border-radius);
     background-color: var(--brand-color-red);
     color: var(--color-text);

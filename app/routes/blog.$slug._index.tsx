@@ -6,6 +6,7 @@ import {BlogPost} from "~/components/BlogPost";
 import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import styles from "~/styles/blogpost.module.css";
+import {Tag} from "~/components/Tag";
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
     return [
@@ -29,7 +30,7 @@ export async function loader({params}: LoaderFunctionArgs) {
     return data.data.page;
 }
 
-export default function About() {
+export default function BlogEntry() {
     const data = useLoaderData<typeof loader>();
 
     if (!data) return null;
@@ -41,6 +42,11 @@ export default function About() {
                     title={data.title}
                     pubDate={new Date(data.createdAt)}
                 >
+                    <div className={styles.tags}>
+                        {data.tags.map(tag => (
+                            <Tag key={tag.text} text={tag.text} />
+                        ))}
+                    </div>
                     {data.content && (
                         <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
                             {data.content}

@@ -16,5 +16,8 @@ query DocEntries {
 query DocEntry($slug: String!) {
     page(where: {slug: $slug}) {
         content
+        tags {
+            text
+        }
     }
 }

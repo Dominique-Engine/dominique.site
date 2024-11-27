@@ -19,7 +19,7 @@ export async function loader() {
     return {data: data.data.pages};
 }
 
-export default function Blog() {
+export default function Docs() {
     const {data} = useLoaderData<typeof loader>();
     const {pathname} = useLocation();
 

@@ -7,6 +7,7 @@ import {useRouteError} from "react-router";
 import {ErrorResponseImpl} from "@remix-run/router/utils";
 import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
+import {Tag} from "~/components/Tag";
 
 export async function loader({params}: LoaderFunctionArgs) {
     if (!params.slug) {
@@ -19,12 +20,17 @@ export async function loader({params}: LoaderFunctionArgs) {
     return data.data.page;
 }
 
-export default function About() {
+export default function DocEntry() {
     const data = useLoaderData<typeof loader>();
 
     if (!data) return null;
     return (
         <section className={styles.section}>
+            <div className={styles.tags}>
+                {data.tags.map(tag => (
+                    <Tag key={tag.text} text={tag.text} />
+                ))}
+            </div>
             {data.content && (
                 <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
                     {data.content}

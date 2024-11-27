@@ -1,0 +1,11 @@
+.tag {
+    /*display: inline-block;*/
+    padding: calc(var(--v-gap)/2) var(--h-gap);
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: var(--border-radius);
+    background-color: var(--color-text);
+    color: var(--color-bg);
+    width: fit-content;
+}

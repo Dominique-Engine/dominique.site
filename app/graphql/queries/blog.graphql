@@ -27,5 +27,8 @@ query BlogPost($slug: String!) {
             keywords
         }
         createdAt
+        tags {
+            text
+        }
     }
 }
