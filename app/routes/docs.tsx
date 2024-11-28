@@ -45,7 +45,7 @@ export default function Docs() {
                                     {pages.map(page => (
                                         <li key={page.slug}>
                                             <Link
-                                                unstable_viewTransition
+                                                viewTransition
                                                 to={`/docs/${encodeURIComponent(page.slug)}`}
                                                 className={`${styles.link}
                                                 ${

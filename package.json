@@ -13,6 +13,7 @@
         "typecheck": "tsc"
     },
     "dependencies": {
+        "@algolia/client-search": "^5.15.0",
         "@monaco-editor/react": "^4.6.0",
         "@remix-run/node": "^2.9.2",
         "@remix-run/react": "^2.9.2",

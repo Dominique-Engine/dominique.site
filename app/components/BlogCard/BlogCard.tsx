@@ -1,7 +1,7 @@
 import {FormattedDate} from "~/components/FormattedDate";
 import {Link} from "@remix-run/react";
 import styles from "./BlogCard.module.css";
-import {unstable_useViewTransitionState} from "react-router-dom";
+import {useViewTransitionState} from "react-router-dom";
 
 interface BlogCardProps {
     slug: string;
@@ -18,13 +18,13 @@ export function BlogCard({
     date,
     description,
 }: BlogCardProps) {
-    const isTransitioning = unstable_useViewTransitionState(`/blog/${slug}`);
+    const isTransitioning = useViewTransitionState(`/blog/${slug}`);
 
     return (
         <div className={styles.container}>
             {image && (
                 <Link
-                    unstable_viewTransition
+                    viewTransition
                     className={styles.title}
                     to={`/blog/${slug}`}
                 >
@@ -45,7 +45,7 @@ export function BlogCard({
             </div>
             <div className={styles.details}>
                 <Link
-                    unstable_viewTransition
+                    viewTransition
                     className={styles.title}
                     to={`/blog/${slug}`}
                     style={{

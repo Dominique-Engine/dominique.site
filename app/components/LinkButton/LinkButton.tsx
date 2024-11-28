@@ -13,7 +13,7 @@ export function LinkButton({to, children, className, style}: LinkButtonProps) {
     return (
         <Link
             style={style}
-            unstable_viewTransition
+            viewTransition
             className={`${styles.button} ${className}`}
             to={to}
         >

@@ -13,7 +13,7 @@ export function HeaderLink({
     const isActive = pathname === href;
     return (
         <Link
-            unstable_viewTransition
+            viewTransition
             to={href}
             className={`${className} ${styles.link} ${isActive ? styles.active : ""}`}
             {...rest}
