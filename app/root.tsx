@@ -21,6 +21,15 @@ import "~/styles/vars.css";
 
 import "highlight.js/styles/atom-one-dark.css";
 
+declare global {
+    interface Window {
+        ENV: {
+            ALGOLIA_APP_ID: string;
+            ALGOLIA_SEARCH_API_KEY: string;
+        };
+    }
+}
+
 export const links: LinksFunction = () => [];
 
 export const meta: MetaFunction = () => {
@@ -35,7 +44,13 @@ export async function loader() {
     if (data.errors || !data.data) {
         throw new Response(`Not found`, {status: 404});
     }
-    return data.data.socialNetworks;
+    return {
+        socialNetworks: data.data.socialNetworks,
+        ENV: {
+            ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
+            ALGOLIA_SEARCH_API_KEY: process.env.ALGOLIA_SEARCH_API_KEY,
+        },
+    };
 }
 
 export function Layout({children}: {children: ReactNode}) {
@@ -66,9 +81,18 @@ export function Layout({children}: {children: ReactNode}) {
                 <NavBar />
                 {children}
                 <Footer
-                    github={data?.find(el => el.platform === "github")?.url}
+                    github={
+                        data?.socialNetworks.find(
+                            el => el.platform === "github"
+                        )?.url
+                    }
                 />
                 <ScrollRestoration />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+                    }}
+                />
                 <Scripts />
             </body>
         </html>

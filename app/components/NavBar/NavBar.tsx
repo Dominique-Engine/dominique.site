@@ -1,6 +1,7 @@
 import {SITE_TITLE} from "~/constants/client";
 import {HeaderLink} from "~/components/HeaderLink";
 import styles from "./NavBar.module.css";
+import {SearchBar} from "~/components/Search";
 
 export function NavBar() {
     return (
@@ -12,6 +13,7 @@ export function NavBar() {
                     </HeaderLink>
                 </div>
                 <div className={styles.links}>
+                    <SearchBar />
                     <HeaderLink to="/docs/introduction%2Finstallation">
                         Doc
                     </HeaderLink>

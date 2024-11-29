@@ -1,0 +1,9 @@
+query AlgoliaPosts {
+    pages(orderBy: createdAt_ASC) {
+        id
+        title
+        slug
+        content
+        type
+    }
+}

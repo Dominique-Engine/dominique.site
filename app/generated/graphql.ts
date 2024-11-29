@@ -5491,6 +5491,36 @@ export type ScheduledReleaseWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type SearchResult = {
+  __typename?: 'SearchResult';
+  id: Scalars['ID']['output'];
+  locale: Locale;
+  matchContext: SearchResultMatchContext;
+  model: SearchResultModel;
+  stage: Stage;
+  titleFields: Array<SearchResultTitleField>;
+};
+
+export type SearchResultMatchContext = {
+  __typename?: 'SearchResultMatchContext';
+  highlight: Scalars['String']['output'];
+};
+
+export type SearchResultModel = {
+  __typename?: 'SearchResultModel';
+  apiId: Scalars['String']['output'];
+};
+
+export type SearchResultTitleField = {
+  __typename?: 'SearchResultTitleField';
+  apiId: Scalars['String']['output'];
+  value: Scalars['String']['output'];
+};
+
+export type SearchWhereInput = {
+  term: Scalars['String']['input'];
+};
+
 export type SocialNetwork = Entity & Node & {
   __typename?: 'SocialNetwork';
   /** The time the document was created */
@@ -6897,6 +6927,11 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type AlgoliaPostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AlgoliaPostsQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, title: string, slug: string, content?: string | null, type: PageType }> };
+
 export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6947,6 +6982,17 @@ export type SocialNetworksQueryVariables = Exact<{ [key: string]: never; }>;
 export type SocialNetworksQuery = { __typename?: 'Query', socialNetworks: Array<{ __typename?: 'SocialNetwork', url: string, platform?: Platform | null }> };
 
 
+export const AlgoliaPostsDocument = gql`
+    query AlgoliaPosts {
+  pages(orderBy: createdAt_ASC) {
+    id
+    title
+    slug
+    content
+    type
+  }
+}
+    `;
 export const BlogPostsDocument = gql`
     query BlogPosts {
   pages(where: {type: BlogPost}, orderBy: createdAt_ASC) {
@@ -7076,6 +7122,7 @@ export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, str
 
 
 const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) => action();
+const AlgoliaPostsDocumentString = print(AlgoliaPostsDocument);
 const BlogPostsDocumentString = print(BlogPostsDocument);
 const BlogPostDocumentString = print(BlogPostDocument);
 const CommendsDocumentString = print(CommendsDocument);
@@ -7087,6 +7134,9 @@ const PagesDocumentString = print(PagesDocument);
 const SocialNetworksDocumentString = print(SocialNetworksDocument);
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    AlgoliaPosts(variables?: AlgoliaPostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: AlgoliaPostsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<AlgoliaPostsQuery>(AlgoliaPostsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'AlgoliaPosts', 'query', variables);
+    },
     BlogPosts(variables?: BlogPostsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: BlogPostsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<BlogPostsQuery>(BlogPostsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'BlogPosts', 'query', variables);
     },
