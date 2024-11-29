@@ -5,6 +5,7 @@ import {getAlgoliaClient} from "~/utils/algolia";
 import {useDebounced} from "~/hooks";
 import {Link} from "@remix-run/react";
 import {PageType} from "~/generated/graphql";
+import {LookingGlass} from "~/components/Icons";
 
 type SearchResults = {
     title: string;
@@ -56,14 +57,13 @@ export function SearchBar() {
             .catch(() => setResults([]));
     }, [debouncedQuery]);
 
-    console.log(results);
     return (
         <>
             <button
                 className={styles.searchBtn}
                 onClick={() => dialogRef.current?.showModal()}
             >
-                🔍
+                <LookingGlass width={25} height={25} />
             </button>
             <dialog ref={dialogRef} className={styles.resultsDialog}>
                 <input
@@ -98,6 +98,9 @@ export function SearchBar() {
                                     }}
                                 ></p>
                             </div>
+                            {i < results.length - 1 && (
+                                <hr className={styles.separator} />
+                            )}
                         </Link>
                     ))}
                 </div>

@@ -1,5 +1,5 @@
 .section {
-    padding: 0 var(--h-gap-l);
+    padding: 0 0;
     scroll-snap-align: start;
 }
 

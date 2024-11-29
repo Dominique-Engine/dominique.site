@@ -1,8 +1,6 @@
 .section {
-    padding: calc(var(--v-gap-l) * 10) var(--h-gap-l);
+    padding: calc(var(--v-gap-l) * 10) 0;
     scroll-snap-align: start;
-    /*display: flex;*/
-    /*flex-direction: row;*/
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     margin-bottom: 100px;

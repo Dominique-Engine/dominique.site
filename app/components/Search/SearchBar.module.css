@@ -3,11 +3,13 @@
     border-radius: calc(var(--border-radius));
     color: var(--color-text);
     transition: border-color var(--anim-duration) var(--cool-easing), width var(--anim-duration) var(--cool-easing);
-    margin-bottom: var(--v-gap);
+    margin: auto auto var(--v-gap);
+    display: block;
     width: 100%;
     font-size: 18px;
     padding: var(--v-gap) calc(var(--h-gap) * 2);
     background-color: var(--color-bg);
+    max-width: 1200px;
 }
 
 .searchInput:focus {
@@ -16,14 +18,11 @@
 }
 
 .resultsDialog {
-    width: 100%;
-    max-width: 1200px;
-    max-height: 80vh;
-    min-height: 100px;
-    margin: calc(var(--v-gap-l) * 4) auto;
+    margin: 0 auto;
+    width: 100vw;
     outline: none;
     border: none;
-    padding: calc(var(--v-gap));
+    padding: calc(var(--v-gap-l) * 4) 0;
     background: transparent;
 }
 
@@ -32,6 +31,8 @@
 }
 
 .results {
+    max-width: 1200px;
+    margin: auto;
     background: var(--color-bg);
     border-radius: var(--border-radius);
     border: 1px solid var(--brand-color-yellow);
@@ -43,10 +44,27 @@
     border: none;
     font-size: 25px;
     padding: calc(var(--v-gap) / 2) var(--h-gap);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        fill: var(--color-text);
+        transition: fill var(--anim-duration) var(--cool-easing);
+    }
+
+
+    @media (max-width: 500px) {
+        order: 10;
+    }
 }
 
 .searchBtn:hover {
     cursor: pointer;
+
+    svg {
+        fill: var(--brand-color-yellow);
+    }
 }
 
 .searchBtn:active {
@@ -59,10 +77,11 @@
 
 .result {
     padding: var(--v-gap) var(--h-gap);
-    border-bottom: 1px solid var(--brand-color-yellow);
     font-size: 18px;
     color: var(--color-text);
     transition: background-color var(--anim-duration) var(--cool-easing), color var(--anim-duration) var(--cool-easing);
+    border-radius: var(--border-radius);
+
     em {
         transition: background-color var(--anim-duration) var(--cool-easing), color var(--anim-duration) var(--cool-easing);
         color: var(--color-bg);
@@ -70,10 +89,18 @@
     }
 }
 
+.separator {
+    border: none;
+    border-bottom: 1px solid var(--brand-color-yellow);
+    width: 100%;
+    margin: var(--h-gap) 0;
+}
+
 .result:hover {
     background: var(--brand-color-yellow);
     color: var(--color-bg);
     cursor: pointer;
+
     em {
         color: var(--brand-color-yellow);
         background-color: var(--color-bg);
@@ -92,7 +119,7 @@
 
 
 .noResults {
-    font-size: 18px;
+    font-size: 38px;
     color: var(--color-text);
     text-align: center;
     padding: var(--v-gap) var(--h-gap);
