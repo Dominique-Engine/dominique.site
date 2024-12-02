@@ -4,6 +4,20 @@
     font-weight: 700;
     line-height: 1;
     text-align: center;
+    @media (max-width: 768px) {
+        font-size: 40px;
+    }
+}
+
+.endBannerBg {
+    border-radius: calc(6 * var(--border-radius));
+    background-color: var(--code-color-bg);
+    margin: 0 calc(var(--h-gap-l) * 1);
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 a.seizeIt {

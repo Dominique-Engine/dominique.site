@@ -60,15 +60,17 @@ export default function Index() {
                     />
                 ))}
                 <TextBanner sectionClassName={styles.endBanner}>
-                    <p>
-                        Go and{" "}
-                        <Link
-                            className={styles.seizeIt}
-                            to={"/docs/introduction%2Finstallation"}
-                        >
-                            seize it
-                        </Link>
-                    </p>
+                    <div className={styles.endBannerBg}>
+                        <p>
+                            Go and{" "}
+                            <Link
+                                className={styles.seizeIt}
+                                to={"/docs/introduction%2Finstallation"}
+                            >
+                                seize it
+                            </Link>
+                        </p>
+                    </div>
                 </TextBanner>
             </main>
         </>
