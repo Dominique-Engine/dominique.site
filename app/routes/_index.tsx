@@ -49,7 +49,7 @@ export default function Index() {
                 />
             </main>
             <Commends commends={commends} />
-            <main className="main-content">
+            <div className="main-content">
                 {rest.map(feature => (
                     <FeatureSection
                         key={feature.id}
@@ -59,6 +59,20 @@ export default function Index() {
                         highlights={feature.highlights}
                     />
                 ))}
+                <TextBanner
+                    title={`Creative coding reimagined`}
+                    description={`Performant and easy prototyping or full lifecycle
+                    development for stunning data visualization and generative art.
+                    Ship tailored experiences without the hassle.`}
+                    titleHighlights={["Creative", "reimagined"]}
+                    descriptionHighlights={[
+                        "Performant",
+                        "data visualization",
+                        "generative art",
+                        "Ship",
+                        "tailored experiences"
+                    ]}
+                />
                 <TextBanner sectionClassName={styles.endBanner}>
                     <div className={styles.endBannerBg}>
                         <p>
@@ -72,7 +86,7 @@ export default function Index() {
                         </p>
                     </div>
                 </TextBanner>
-            </main>
+            </div>
         </>
     );
 }

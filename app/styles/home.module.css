@@ -24,10 +24,13 @@ a.seizeIt {
     display: inline;
     color: var(--brand-color-red);
     text-decoration: none;
-    transition: color var(--anim-duration) var(--cool-easing);
+    transition: color var(--anim-duration) var(--cool-easing) background-color var(--anim-duration) var(--cool-easing);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 1rem;
 }
 
 a.seizeIt:hover {
-    text-decoration: underline;
-    color: var(--brand-color-yellow);
+    /*text-decoration: underline;*/
+    color: var(--color-bg);
+    background-color: var(--brand-color-yellow);
 }

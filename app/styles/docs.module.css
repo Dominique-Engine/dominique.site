@@ -3,7 +3,6 @@
     scroll-snap-align: start;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    margin-bottom: 100px;
     width: 100%;
     @media (max-width: 768px) {
         flex-direction: column;

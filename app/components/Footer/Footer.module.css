@@ -1,4 +1,8 @@
 .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     color: white;
     padding: 0;
     scroll-snap-align: start;
@@ -7,7 +11,7 @@
 .footerContent {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: calc(var(--v-gap) * 4) var(--h-gap);
+    padding: calc(var(--v-gap) * 3) calc(var(--h-gap) * 3);
     display: flex;
     justify-content: center;
     align-items: center;

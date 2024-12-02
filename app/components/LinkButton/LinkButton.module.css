@@ -7,13 +7,15 @@
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
-    transition: box-shadow var(--anim-duration) var(--cool-easing);
+    transition: box-shadow var(--anim-duration) var(--cool-easing) color var(--anim-duration) var(--cool-easing) background-color var(--anim-duration) var(--cool-easing);
     text-decoration: none;
     width: fit-content;
     height: fit-content;
 }
 
 .button:hover {
-    box-shadow: 0 0 20px 1px var(--brand-color-red);
+    /*box-shadow: 0 0 20px 1px var(--brand-color-red);*/
     text-decoration: none;
+    background-color: var(--brand-color-yellow);
+    color: var(--color-bg);
 }
