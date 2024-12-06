@@ -1,13 +1,11 @@
 import {useLoaderData} from "@remix-run/react";
 import {LoaderFunctionArgs} from "@remix-run/router";
-import Markdown from "react-markdown";
 import {sdk} from "~/graphql/client";
 import styles from "~/styles/docentry.module.css";
 import {useRouteError} from "react-router";
 import {ErrorResponseImpl} from "@remix-run/router/utils";
-import rehypeRaw from "rehype-raw";
-import rehypeHighlight from "rehype-highlight";
 import {Tag} from "~/components/Tag";
+import {Markdown} from "~/components/Markdown";
 
 export async function loader({params}: LoaderFunctionArgs) {
     if (!params.slug) {
@@ -24,18 +22,17 @@ export default function DocEntry() {
     const data = useLoaderData<typeof loader>();
 
     if (!data) return null;
+
     return (
         <section className={styles.section}>
-            <div className={styles.tags}>
-                {data.tags.map(tag => (
-                    <Tag key={tag.text} text={tag.text} />
-                ))}
-            </div>
-            {data.content && (
-                <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
-                    {data.content}
-                </Markdown>
+            {!!data.tags.length && (
+                <div className={styles.tags}>
+                    {data.tags.map(tag => (
+                        <Tag key={tag.text} text={tag.text} />
+                    ))}
+                </div>
             )}
+            {data.content && <Markdown content={data.content} />}
         </section>
     );
 }

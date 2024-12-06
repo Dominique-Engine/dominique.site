@@ -28,3 +28,28 @@
         --v-gap: 20px;
     }
 }
+
+/*:root {*/
+/*    --color-text: #121212;*/
+/*    --color-bg: #eeeeee;*/
+/*    --code-color-bg: #f5f5f5;*/
+
+/*    --brand-color-red: #ff5757;*/
+/*    --brand-color-yellow: #ffde59;*/
+/*    --brand-color-green: #7ed957;*/
+/*    --brand-color-gray: #797979;*/
+/*    --brand-color-blue: #03989e;*/
+
+/*    --border-radius: 5px;*/
+/*    --anim-duration: 0.2s;*/
+
+/*    --h-gap: 20px;*/
+/*    --h-gap-l: 20px;*/
+/*    --v-gap: 20px;*/
+/*    --v-gap-l: 20px;*/
+
+/*    @media (width >= 768px) {*/
+/*        --h-gap: 20px;*/
+/*        --v-gap: 20px;*/
+/*    }*/
+/*}*/

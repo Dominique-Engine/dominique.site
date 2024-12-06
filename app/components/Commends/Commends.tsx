@@ -21,7 +21,7 @@ export function Commends({commends}: CommendsProps) {
     const swiperProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
     useEffect(() => {
-        return swiperProgress.onChange(value => {
+        return swiperProgress.on("change", value => {
             if (swiperRef.current) {
                 swiperRef.current.swiper.setProgress(value, 0);
             }
@@ -37,11 +37,16 @@ export function Commends({commends}: CommendsProps) {
                 freeMode
                 loop
                 modules={[FreeMode]}
-                draggable={false}
-                allowTouchMove={false}
+                draggable={true}
+                allowTouchMove={true}
+                onProgress={swiper => {
+                    console.log("swiper-progress", swiper.progress);
+                    swiperProgress.set(swiper.progress);
+                    console.log("swiperProgress", swiperProgress.get());
+                }}
             >
                 {commends.map(commend => (
-                    <SwiperSlide className={styles.commend}>
+                    <SwiperSlide key={commend.id} className={styles.commend}>
                         <ExperienceCard
                             key={commend.id}
                             content={commend.content}

@@ -1,0 +1,7 @@
+.pre {
+    padding-bottom: var(--v-gap);
+}
+
+.ul {
+    padding-left: var(--h-gap);
+}

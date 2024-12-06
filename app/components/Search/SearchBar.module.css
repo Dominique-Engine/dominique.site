@@ -52,11 +52,6 @@
         fill: var(--color-text);
         transition: fill var(--anim-duration) var(--cool-easing);
     }
-
-
-    @media (max-width: 500px) {
-        order: 10;
-    }
 }
 
 .searchBtn:hover {

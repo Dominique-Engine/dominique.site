@@ -19,7 +19,7 @@ export default function Index() {
     const [highlight, second, ...rest] = data;
     return (
         <>
-            <main className="main-content">
+            <main className="main-content home">
                 <HeroFeature
                     title={highlight.title}
                     description={highlight.description}

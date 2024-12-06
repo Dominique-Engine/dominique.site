@@ -18,6 +18,7 @@ import "~/styles/reset.css";
 import "~/styles/global.css";
 import "~/styles/typography.css";
 import "~/styles/vars.css";
+// import "~/styles/transitioning.css";
 
 import "highlight.js/styles/atom-one-dark.css";
 

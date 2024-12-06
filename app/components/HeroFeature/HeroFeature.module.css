@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: calc(var(--v-gap-l) * 10) 0;
-    min-height: 100vh;
+    padding: calc(var(--v-gap-l) * 0) 0;
+    min-height: calc(100vh - 100px);
     scroll-snap-align: center;
 }
 

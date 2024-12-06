@@ -1,12 +1,10 @@
 import {useLoaderData, MetaFunction} from "@remix-run/react";
 import {LoaderFunctionArgs} from "@remix-run/router";
-import Markdown from "react-markdown";
 import {sdk} from "~/graphql/client";
 import {BlogPost} from "~/components/BlogPost";
-import rehypeRaw from "rehype-raw";
-import rehypeHighlight from "rehype-highlight";
 import styles from "~/styles/blogpost.module.css";
 import {Tag} from "~/components/Tag";
+import {Markdown} from "~/components/Markdown/Markdown";
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
     return [
@@ -42,16 +40,14 @@ export default function BlogEntry() {
                     title={data.title}
                     pubDate={new Date(data.createdAt)}
                 >
-                    <div className={styles.tags}>
-                        {data.tags.map(tag => (
-                            <Tag key={tag.text} text={tag.text} />
-                        ))}
-                    </div>
-                    {data.content && (
-                        <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
-                            {data.content}
-                        </Markdown>
+                    {!!data.tags.length && (
+                        <div className={styles.tags}>
+                            {data.tags.map(tag => (
+                                <Tag key={tag.text} text={tag.text} />
+                            ))}
+                        </div>
                     )}
+                    {data.content && <Markdown content={data.content} />}
                 </BlogPost>
             </section>
         </main>

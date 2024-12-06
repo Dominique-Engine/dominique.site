@@ -13,12 +13,12 @@ export function NavBar() {
                     </HeaderLink>
                 </div>
                 <div className={styles.links}>
-                    <SearchBar />
                     <HeaderLink to="/docs/introduction%2Finstallation">
                         Doc
                     </HeaderLink>
                     <HeaderLink to="/blog">Blog</HeaderLink>
                     {/*<HeaderLink to="/playground">Playground</HeaderLink>*/}
+                    <SearchBar />
                 </div>
             </nav>
         </header>
