@@ -36,7 +36,7 @@ export function Commends({commends}: CommendsProps) {
                 draggable={true}
                 allowTouchMove={true}
                 onProgress={swiper => {
-                    console.log("swiper-progress", swiper.progress);
+                    // console.log("swiper-progress", swiper.progress);
                     // swiperProgress.set(swiper.progress);
                     // console.log("swiperProgress", swiperProgress.get());
                 }}

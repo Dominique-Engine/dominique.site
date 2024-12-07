@@ -65,15 +65,30 @@ export function SearchBar() {
             >
                 <LookingGlass width={25} height={25} />
             </button>
-            <dialog ref={dialogRef} className={styles.resultsDialog}>
+            <dialog
+                ref={dialogRef}
+                className={styles.resultsDialog}
+                onClick={() => {
+                    dialogRef.current?.close();
+                }}
+            >
                 <input
                     className={styles.searchInput}
                     value={query}
                     onChange={e => {
                         setQuery(e.target.value);
                     }}
+                    onClick={e => {
+                        e.stopPropagation();
+                    }}
+                    placeholder={"What are you looking for?"}
                 ></input>
-                <div className={styles.results}>
+                <div
+                    className={styles.results}
+                    onClick={e => {
+                        e.stopPropagation();
+                    }}
+                >
                     {results.length === 0 && (
                         <p className={styles.noResults}>:(</p>
                     )}
