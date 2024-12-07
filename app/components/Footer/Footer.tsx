@@ -1,5 +1,6 @@
 import styles from "./Footer.module.css";
 import {FaGithub, FaTwitter, FaYoutube} from "react-icons/fa";
+import {ScrollToTop} from "~/components/ScrollToTop";
 
 interface FooterProps {
     github?: string;
@@ -45,6 +46,7 @@ export function Footer({github, x = "/#", youtube = "/#"}: FooterProps) {
                             <FaYoutube />
                         </a>
                     )}
+                    <ScrollToTop />
                 </div>
             </div>
         </footer>

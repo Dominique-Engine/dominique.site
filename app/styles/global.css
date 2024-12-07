@@ -8,9 +8,14 @@ body {
     position: relative;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .main-content {
     margin: auto;
     max-width: var(--max-width);
+    animation-timeline: scroll();
 }
 
 main {

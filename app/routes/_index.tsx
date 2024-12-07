@@ -5,6 +5,7 @@ import {FeatureSection} from "~/components/FeatureSection";
 import {TextBanner} from "~/components/TextBanner";
 import styles from "~/styles/home.module.css";
 import {Commends} from "~/components/Commends";
+import {BlurredBalls} from "~/components/BlurredBalls";
 
 export async function loader() {
     const data = await sdk.Landing();
@@ -19,7 +20,7 @@ export default function Index() {
     const [highlight, second, ...rest] = data;
     return (
         <>
-            <main className="main-content home">
+            <main className="main-content">
                 <HeroFeature
                     title={highlight.title}
                     description={highlight.description}
@@ -70,12 +71,13 @@ export default function Index() {
                         "data visualization",
                         "generative art",
                         "Ship",
-                        "tailored experiences"
+                        "tailored experiences",
                     ]}
                 />
                 <TextBanner sectionClassName={styles.endBanner}>
                     <div className={styles.endBannerBg}>
-                        <p>
+                        {/*<BlurredBalls />*/}
+                        <p className={styles.endBannerText}>
                             Go and{" "}
                             <Link
                                 className={styles.seizeIt}
