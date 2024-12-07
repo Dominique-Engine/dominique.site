@@ -19,6 +19,7 @@ export function BgGrid() {
                 ))}
                 <div className={styles.lastRow} />
             </div>
+            <div className={styles.bg} />
         </div>
     );
 }

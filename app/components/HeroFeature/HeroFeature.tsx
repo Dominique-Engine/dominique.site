@@ -35,7 +35,6 @@ export function HeroFeature({
                     <Markdown content={code} />
                 </div>
             </div>
-            <div className={styles.bg} />
         </section>
     );
 }

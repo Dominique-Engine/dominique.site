@@ -6,6 +6,7 @@
     right: 0;
     pointer-events: none;
     z-index: -100;
+    overflow: hidden;
 }
 
 .grid {
@@ -28,7 +29,6 @@
             var(--color-text)  0px, var(--color-text) 10px,
             transparent 5px, transparent 70px
     );
-    /*TODO use this*/
     opacity: 0.05;
 }
 
@@ -36,4 +36,18 @@
     position: absolute;
     right: 0;
     height: 100%;
+}
+
+.bg {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 220vw;
+    transform: rotateZ(-8deg) scale(1.5) translateX(-50%);
+    background-color: #161719;
+    height: calc(100vh + 400px);
+
+    @media (width >= 768px) {
+        height: calc(100vh - 100px);
+    }
 }
