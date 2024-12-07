@@ -1,3 +1,7 @@
+:root {
+    --scrollbar-width: calc(100vw - 100%);
+}
+
 body {
     background-color: var(--color-bg);
     min-height: 100vh;
@@ -6,7 +10,6 @@ body {
 
 .main-content {
     margin: auto;
-    /*padding-bottom: 20px;*/
     max-width: var(--max-width);
 }
 
@@ -57,4 +60,24 @@ code {
     @media (max-width: 768px) {
         font-size: 16px;
     }
+}
+
+/* For WebKit browsers like Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 8px; /* Custom width */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Transparent background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--brand-color-yellow); /* Semi-transparent scrollbar */
+    border-radius: 4px;
+}
+
+/* Firefox Custom Scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-color-yellow) transparent;
 }

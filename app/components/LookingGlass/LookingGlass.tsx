@@ -3,7 +3,7 @@ import styles from "./LookingGlass.module.css";
 import {useMousePosition} from "~/hooks/useMousePosition";
 
 export const LookingGlass = () => {
-    const useShakingMouseValue = useShakingMouse(5000, 4000);
+    const useShakingMouseValue = useShakingMouse(5000, 7000);
     const pos = useMousePosition();
     return (
         <div

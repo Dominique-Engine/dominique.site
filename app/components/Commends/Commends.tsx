@@ -1,11 +1,11 @@
 import styles from "./Commends.module.css";
 import {ExperienceCard} from "~/components/ExperienceCard";
-import {useScroll, useTransform} from "framer-motion";
 import {Swiper, SwiperSlide, SwiperRef} from "swiper/react";
 import {FreeMode} from "swiper/modules";
 
 import "swiper/css";
 import {useEffect, useRef} from "react";
+import {useScrollPosition} from "~/hooks/useScrollPosition";
 
 interface CommendsProps {
     commends: {
@@ -17,16 +17,12 @@ interface CommendsProps {
 
 export function Commends({commends}: CommendsProps) {
     const swiperRef = useRef<SwiperRef>(null);
-    const {scrollYProgress} = useScroll();
-    const swiperProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-    useEffect(() => {
-        return swiperProgress.on("change", value => {
-            if (swiperRef.current) {
-                swiperRef.current.swiper.setProgress(value, 0);
-            }
-        });
-    }, [swiperProgress]);
+    useScrollPosition(v => {
+        if (swiperRef.current) {
+            v = swiperRef.current.swiper.progress + (v - swiperRef.current.swiper.progress) * 0.1;
+            swiperRef.current.swiper.setProgress(v,0);
+        }
+    });
 
     return (
         <div className={styles.commends}>
@@ -41,8 +37,8 @@ export function Commends({commends}: CommendsProps) {
                 allowTouchMove={true}
                 onProgress={swiper => {
                     console.log("swiper-progress", swiper.progress);
-                    swiperProgress.set(swiper.progress);
-                    console.log("swiperProgress", swiperProgress.get());
+                    // swiperProgress.set(swiper.progress);
+                    // console.log("swiperProgress", swiperProgress.get());
                 }}
             >
                 {commends.map(commend => (

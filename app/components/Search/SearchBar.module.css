@@ -24,6 +24,7 @@
     border: none;
     padding: calc(var(--v-gap-l) * 4) 0;
     background: transparent;
+    overflow: hidden;
 }
 
 .resultsDialog::backdrop {

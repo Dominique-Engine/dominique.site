@@ -12,7 +12,7 @@ export function useShakingMouse(cooldown = 800, strength = 3000) {
         };
 
         const decreasing = setInterval(() => {
-            setMoveAmount(prev => prev * 0.9);
+            setMoveAmount(prev => prev * 0.1);
         }, 100);
 
         const handleShake = () => {
