@@ -21,6 +21,7 @@ import "~/styles/vars.css";
 // import "~/styles/transitioning.css";
 
 import "highlight.js/styles/atom-one-dark.css";
+import {LookingGlass} from "~/components/LookingGlass";
 
 declare global {
     interface Window {
@@ -88,6 +89,7 @@ export function Layout({children}: {children: ReactNode}) {
                         )?.url
                     }
                 />
+                <LookingGlass />
                 <ScrollRestoration />
                 <script
                     dangerouslySetInnerHTML={{

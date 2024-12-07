@@ -1,5 +1,6 @@
 .commends {
     min-height: 80vh;
+    scroll-snap-align: center;
 }
 
 .commend {
