@@ -10,7 +10,8 @@
         "format": "prettier --write .",
         "start": "remix-serve ./build/server/index.js",
         "codegen": "gql-gen --config codegen.ts",
-        "typecheck": "tsc"
+        "typecheck": "tsc",
+        "plop": "plop"
     },
     "dependencies": {
         "@algolia/client-search": "^5.15.0",
@@ -55,7 +56,8 @@
         "prettier": "3.3.0",
         "typescript": "^5.1.6",
         "vite": "^5.1.0",
-        "vite-tsconfig-paths": "^4.2.1"
+        "vite-tsconfig-paths": "^4.2.1",
+        "plop": "^4.0.1"
     },
     "engines": {
         "node": ">=20.0.0"

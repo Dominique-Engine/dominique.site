@@ -51,3 +51,12 @@ Source algolia with:
 ```bash
 bun ./scripts/algolia.js
 ```
+
+
+## Scaffolding
+
+Project is using plop to generate components, hooks, pages, and more. To generate a new component, run:
+
+```bash
+npm run plop component
+```
