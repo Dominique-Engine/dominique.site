@@ -76,7 +76,7 @@ export default function Index() {
                 />
                 <TextBanner sectionClassName={styles.endBanner}>
                     <div className={styles.endBannerBg}>
-                        {/*<BlurredBalls />*/}
+                        <BlurredBalls />
                         <p className={styles.endBannerText}>
                             Go and{" "}
                             <Link

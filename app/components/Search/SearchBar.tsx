@@ -6,6 +6,7 @@ import {useDebounced} from "~/hooks";
 import {Link} from "@remix-run/react";
 import {PageType} from "~/generated/graphql";
 import {LookingGlass} from "~/components/Icons";
+import {Elephant} from "~/components/Elephant";
 
 type SearchResults = {
     title: string;
@@ -90,7 +91,9 @@ export function SearchBar() {
                     }}
                 >
                     {results.length === 0 && (
-                        <p className={styles.noResults}>:(</p>
+                        <p className={styles.noResults}>
+                            <Elephant />
+                        </p>
                     )}
                     {results.map((result, i) => (
                         <Link

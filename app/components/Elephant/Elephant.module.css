@@ -1,0 +1,9 @@
+.Elephant {
+    fill: var(--color-text);
+    position: relative;
+    overflow: visible;
+}
+
+.eyes {
+    position: relative;
+}

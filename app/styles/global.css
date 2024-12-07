@@ -6,6 +6,7 @@ body {
     background-color: var(--color-bg);
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
 }
 
 html {
@@ -15,7 +16,6 @@ html {
 .main-content {
     margin: auto;
     max-width: var(--max-width);
-    animation-timeline: scroll();
 }
 
 main {

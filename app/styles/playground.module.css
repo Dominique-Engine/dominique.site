@@ -3,7 +3,7 @@
 }
 
 .section {
-    padding: calc(var(--v-gap-l) * 6) 0;
+    padding: calc(var(--v-gap-l) * 2) 0;
     scroll-snap-align: start;
     display: flex;
     min-height: calc(100vh + calc(var(--v-gap-l) * 6));

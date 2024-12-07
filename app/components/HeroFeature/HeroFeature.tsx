@@ -1,9 +1,7 @@
 import styles from "./HeroFeature.module.css";
-import Markdown from "react-markdown";
 import {TextWithHighlights} from "~/components/TextWithHighlights";
 import {LinkButton} from "~/components/LinkButton";
-import rehypeRaw from "rehype-raw";
-import rehypeHighlight from "rehype-highlight";
+import {Markdown} from "~/components/Markdown";
 
 interface HeroFeatureProps {
     title: string;
@@ -34,11 +32,10 @@ export function HeroFeature({
                     </LinkButton>
                 </div>
                 <div className={styles.right}>
-                    <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>
-                        {code}
-                    </Markdown>
+                    <Markdown content={code} />
                 </div>
             </div>
+            <div className={styles.bg} />
         </section>
     );
 }

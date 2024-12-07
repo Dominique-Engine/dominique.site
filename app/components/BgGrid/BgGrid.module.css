@@ -1,0 +1,39 @@
+.BgGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: -100;
+}
+
+.grid {
+    max-width: var(--max-width);
+    display: grid;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.row {
+    height: 100%;
+}
+
+.row, .lastRow{
+    width: 4px;
+    border: none;
+    background: repeating-linear-gradient(
+            to bottom,
+            var(--color-text)  0px, var(--color-text) 10px,
+            transparent 5px, transparent 70px
+    );
+    /*TODO use this*/
+    opacity: 0.05;
+}
+
+.lastRow{
+    position: absolute;
+    right: 0;
+    height: 100%;
+}

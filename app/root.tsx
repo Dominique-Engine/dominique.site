@@ -24,6 +24,7 @@ import "highlight.js/styles/atom-one-dark.css";
 import {LookingGlass} from "~/components/LookingGlass";
 import {FullscreenScroll} from "~/components/FullscreenScroll";
 import {ScrollToTop} from "~/components/ScrollToTop";
+import {BgGrid} from "~/components/BgGrid";
 
 declare global {
     interface Window {
@@ -83,6 +84,7 @@ export function Layout({children}: {children: ReactNode}) {
             </head>
             <body>
                 <FullscreenScroll />
+                <BgGrid />
                 <NavBar />
                 {children}
                 <Footer

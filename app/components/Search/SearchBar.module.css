@@ -12,6 +12,10 @@
     max-width: 1200px;
 }
 
+.searchInput::placeholder {
+    color: var(--color-text);
+}
+
 .searchInput:focus {
     border-color: var(--brand-color-yellow);
     outline: none;

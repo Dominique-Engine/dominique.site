@@ -5,6 +5,7 @@
     padding: calc(var(--v-gap-l) * 0) 0;
     min-height: calc(100vh - 100px);
     scroll-snap-align: center;
+    position: relative;
 }
 
 .content {
@@ -48,4 +49,15 @@
     font-weight: 400;
     margin-bottom: 2rem;
     line-height: 1.2;
+}
+
+.bg {
+    z-index: -10;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    transform: rotateZ(-8deg) scale(1.5);
+    background-color: #161719;
 }
