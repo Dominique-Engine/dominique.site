@@ -11,6 +11,7 @@ export function Markdown({content}: {content: string}) {
                 ul: props => <ul {...props} className={styles.ul} />,
                 ol: props => <ol {...props} className={styles.ul} />,
                 pre: props => <pre {...props} className={styles.pre} />,
+                hr: props => <hr {...props} className={styles.hr} />,
             }}
         >
             {content}

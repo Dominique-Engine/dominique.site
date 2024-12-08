@@ -4,4 +4,18 @@
 
 .ul {
     padding-left: var(--h-gap);
+    padding-bottom: var(--v-gap);
+}
+
+.hr {
+    /*width: 100%;*/
+    height: 4px;
+    border: none;
+    background: repeating-linear-gradient(
+            to right,
+            var(--color-text)  0px, var(--color-text) 10px,
+            transparent 5px, transparent 70px
+    );
+    opacity: 0.05;
+    margin-bottom: var(--v-gap);
 }

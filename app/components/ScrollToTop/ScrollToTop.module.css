@@ -5,6 +5,9 @@
     font-size: 45px;
     max-width: var(--max-width);
     margin-left: auto;
+    border: none;
+    background-color: transparent;
+    color: var(--color-text);
 
     &:hover {
         color: var(--brand-color-yellow);

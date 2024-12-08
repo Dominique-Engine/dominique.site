@@ -1,11 +1,21 @@
 import styles from "./ScrollToTop.module.css";
-import {Link} from "@remix-run/react";
 import {FaChevronCircleUp} from "react-icons/fa";
 
 export function ScrollToTop() {
-  return (
-      <Link to="#" className={styles.ScrollToTop} title="Go to top">
-          <FaChevronCircleUp />
-      </Link>
-  );
+    const handleClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
+    return (
+        <button
+            className={styles.ScrollToTop}
+            title="Go to top"
+            onClick={handleClick}
+        >
+            <FaChevronCircleUp />
+        </button>
+    );
 }
