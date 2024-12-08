@@ -4,6 +4,7 @@ import {TextWithHighlights} from "~/components/TextWithHighlights";
 import {CSSProperties} from "react";
 import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
+import glsl from "highlight.js/lib/languages/glsl";
 
 interface FeatureSectionProps {
     title: string;

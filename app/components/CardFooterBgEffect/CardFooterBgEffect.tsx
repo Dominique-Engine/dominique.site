@@ -1,6 +1,6 @@
-import styles from "./BlurredBalls.module.css";
+import styles from "./CardFooterBgEffect.module.css";
 
-export function BlurredBalls() {
+export function CardFooterBgEffect() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"

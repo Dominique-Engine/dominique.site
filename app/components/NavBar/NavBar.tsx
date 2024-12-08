@@ -17,6 +17,7 @@ export function NavBar() {
                         Doc
                     </HeaderLink>
                     <HeaderLink to="/blog">Blog</HeaderLink>
+                    <HeaderLink to="/download">Download</HeaderLink>
                     {/*<HeaderLink to="/playground">Playground</HeaderLink>*/}
                     <SearchBar />
                 </div>

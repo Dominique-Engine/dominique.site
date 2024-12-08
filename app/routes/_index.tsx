@@ -5,7 +5,7 @@ import {FeatureSection} from "~/components/FeatureSection";
 import {TextBanner} from "~/components/TextBanner";
 import styles from "~/styles/home.module.css";
 import {Commends} from "~/components/Commends";
-import {BlurredBalls} from "~/components/BlurredBalls";
+import {CardFooterBgEffect} from "~/components/CardFooterBgEffect";
 
 export async function loader() {
     const data = await sdk.Landing();
@@ -77,7 +77,7 @@ export default function Index() {
                 />
                 <TextBanner sectionClassName={styles.endBanner}>
                     <div className={styles.endBannerBg}>
-                        <BlurredBalls />
+                        <CardFooterBgEffect />
                         <p className={styles.endBannerText}>
                             Go and{" "}
                             <Link

@@ -1339,6 +1339,491 @@ export type DocumentVersion = {
   stage: Stage;
 };
 
+export type DownloadVersion = Entity & Node & {
+  __typename?: 'DownloadVersion';
+  changeLog?: Maybe<Scalars['String']['output']>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']['output'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<DownloadVersion>;
+  downloadUrl?: Maybe<Scalars['String']['output']>;
+  /** List of DownloadVersion versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID']['output'];
+  pVersion?: Maybe<PVersion>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']['output'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type DownloadVersionCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type DownloadVersionDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']['input'];
+  inheritLocale?: Scalars['Boolean']['input'];
+  stages?: Array<Stage>;
+};
+
+
+export type DownloadVersionHistoryArgs = {
+  limit?: Scalars['Int']['input'];
+  skip?: Scalars['Int']['input'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type DownloadVersionPVersionArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type DownloadVersionPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type DownloadVersionScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type DownloadVersionUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type DownloadVersionConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: DownloadVersionWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type DownloadVersionConnection = {
+  __typename?: 'DownloadVersionConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<DownloadVersionEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type DownloadVersionCreateInput = {
+  changeLog?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  downloadUrl?: InputMaybe<Scalars['String']['input']>;
+  pVersion?: InputMaybe<PVersionCreateOneInlineInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type DownloadVersionCreateManyInlineInput = {
+  /** Connect multiple existing DownloadVersion documents */
+  connect?: InputMaybe<Array<DownloadVersionWhereUniqueInput>>;
+  /** Create and connect multiple existing DownloadVersion documents */
+  create?: InputMaybe<Array<DownloadVersionCreateInput>>;
+};
+
+export type DownloadVersionCreateOneInlineInput = {
+  /** Connect one existing DownloadVersion document */
+  connect?: InputMaybe<DownloadVersionWhereUniqueInput>;
+  /** Create and connect one DownloadVersion document */
+  create?: InputMaybe<DownloadVersionCreateInput>;
+};
+
+/** An edge in a connection. */
+export type DownloadVersionEdge = {
+  __typename?: 'DownloadVersionEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: DownloadVersion;
+};
+
+/** Identifies documents */
+export type DownloadVersionManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DownloadVersionWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DownloadVersionWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DownloadVersionWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  changeLog?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  changeLog_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  changeLog_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  changeLog_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  changeLog_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  changeLog_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  changeLog_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  changeLog_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  changeLog_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  changeLog_starts_with?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<DownloadVersionWhereStageInput>;
+  documentInStages_none?: InputMaybe<DownloadVersionWhereStageInput>;
+  documentInStages_some?: InputMaybe<DownloadVersionWhereStageInput>;
+  downloadUrl?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  downloadUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  downloadUrl_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  downloadUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  downloadUrl_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  downloadUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  downloadUrl_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  downloadUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  downloadUrl_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  downloadUrl_starts_with?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  pVersion?: InputMaybe<PVersionWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum DownloadVersionOrderByInput {
+  ChangeLogAsc = 'changeLog_ASC',
+  ChangeLogDesc = 'changeLog_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  DownloadUrlAsc = 'downloadUrl_ASC',
+  DownloadUrlDesc = 'downloadUrl_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type DownloadVersionUpdateInput = {
+  changeLog?: InputMaybe<Scalars['String']['input']>;
+  downloadUrl?: InputMaybe<Scalars['String']['input']>;
+  pVersion?: InputMaybe<PVersionUpdateOneInlineInput>;
+};
+
+export type DownloadVersionUpdateManyInlineInput = {
+  /** Connect multiple existing DownloadVersion documents */
+  connect?: InputMaybe<Array<DownloadVersionConnectInput>>;
+  /** Create and connect multiple DownloadVersion documents */
+  create?: InputMaybe<Array<DownloadVersionCreateInput>>;
+  /** Delete multiple DownloadVersion documents */
+  delete?: InputMaybe<Array<DownloadVersionWhereUniqueInput>>;
+  /** Disconnect multiple DownloadVersion documents */
+  disconnect?: InputMaybe<Array<DownloadVersionWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing DownloadVersion documents */
+  set?: InputMaybe<Array<DownloadVersionWhereUniqueInput>>;
+  /** Update multiple DownloadVersion documents */
+  update?: InputMaybe<Array<DownloadVersionUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple DownloadVersion documents */
+  upsert?: InputMaybe<Array<DownloadVersionUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type DownloadVersionUpdateManyInput = {
+  changeLog?: InputMaybe<Scalars['String']['input']>;
+  downloadUrl?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DownloadVersionUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: DownloadVersionUpdateManyInput;
+  /** Document search */
+  where: DownloadVersionWhereInput;
+};
+
+export type DownloadVersionUpdateOneInlineInput = {
+  /** Connect existing DownloadVersion document */
+  connect?: InputMaybe<DownloadVersionWhereUniqueInput>;
+  /** Create and connect one DownloadVersion document */
+  create?: InputMaybe<DownloadVersionCreateInput>;
+  /** Delete currently connected DownloadVersion document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Disconnect currently connected DownloadVersion document */
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single DownloadVersion document */
+  update?: InputMaybe<DownloadVersionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single DownloadVersion document */
+  upsert?: InputMaybe<DownloadVersionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type DownloadVersionUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: DownloadVersionUpdateInput;
+  /** Unique document search */
+  where: DownloadVersionWhereUniqueInput;
+};
+
+export type DownloadVersionUpsertInput = {
+  /** Create document if it didn't exist */
+  create: DownloadVersionCreateInput;
+  /** Update document if it exists */
+  update: DownloadVersionUpdateInput;
+};
+
+export type DownloadVersionUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: DownloadVersionUpsertInput;
+  /** Unique document search */
+  where: DownloadVersionWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type DownloadVersionWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Identifies documents */
+export type DownloadVersionWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DownloadVersionWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DownloadVersionWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DownloadVersionWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  changeLog?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  changeLog_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  changeLog_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  changeLog_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  changeLog_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  changeLog_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  changeLog_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  changeLog_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  changeLog_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  changeLog_starts_with?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<DownloadVersionWhereStageInput>;
+  documentInStages_none?: InputMaybe<DownloadVersionWhereStageInput>;
+  documentInStages_some?: InputMaybe<DownloadVersionWhereStageInput>;
+  downloadUrl?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  downloadUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  downloadUrl_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  downloadUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  downloadUrl_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  downloadUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  downloadUrl_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  downloadUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  downloadUrl_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  downloadUrl_starts_with?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  pVersion?: InputMaybe<PVersionWhereInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type DownloadVersionWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<DownloadVersionWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<DownloadVersionWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<DownloadVersionWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<DownloadVersionWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References DownloadVersion record uniquely */
+export type DownloadVersionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 /** An object with an ID */
 export type Entity = {
   /** The id of the object. */
@@ -1352,8 +1837,10 @@ export enum EntityTypeName {
   /** Asset system model */
   Asset = 'Asset',
   Commend = 'Commend',
+  DownloadVersion = 'DownloadVersion',
   Feature = 'Feature',
   Meta = 'Meta',
+  PVersion = 'PVersion',
   Page = 'Page',
   /** Scheduled Operation system model */
   ScheduledOperation = 'ScheduledOperation',
@@ -2437,8 +2924,12 @@ export type Mutation = {
   createAsset?: Maybe<Asset>;
   /** Create one commend */
   createCommend?: Maybe<Commend>;
+  /** Create one downloadVersion */
+  createDownloadVersion?: Maybe<DownloadVersion>;
   /** Create one feature */
   createFeature?: Maybe<Feature>;
+  /** Create one pVersion */
+  createPVersion?: Maybe<PVersion>;
   /** Create one page */
   createPage?: Maybe<Page>;
   /** Create one scheduledRelease */
@@ -2451,6 +2942,8 @@ export type Mutation = {
   deleteAsset?: Maybe<Asset>;
   /** Delete one commend from _all_ existing stages. Returns deleted document. */
   deleteCommend?: Maybe<Commend>;
+  /** Delete one downloadVersion from _all_ existing stages. Returns deleted document. */
+  deleteDownloadVersion?: Maybe<DownloadVersion>;
   /** Delete one feature from _all_ existing stages. Returns deleted document. */
   deleteFeature?: Maybe<Feature>;
   /**
@@ -2468,12 +2961,26 @@ export type Mutation = {
   /** Delete many Commend documents, return deleted documents */
   deleteManyCommendsConnection: CommendConnection;
   /**
+   * Delete many DownloadVersion documents
+   * @deprecated Please use the new paginated many mutation (deleteManyDownloadVersionsConnection)
+   */
+  deleteManyDownloadVersions: BatchPayload;
+  /** Delete many DownloadVersion documents, return deleted documents */
+  deleteManyDownloadVersionsConnection: DownloadVersionConnection;
+  /**
    * Delete many Feature documents
    * @deprecated Please use the new paginated many mutation (deleteManyFeaturesConnection)
    */
   deleteManyFeatures: BatchPayload;
   /** Delete many Feature documents, return deleted documents */
   deleteManyFeaturesConnection: FeatureConnection;
+  /**
+   * Delete many PVersion documents
+   * @deprecated Please use the new paginated many mutation (deleteManyPVersionsConnection)
+   */
+  deleteManyPVersions: BatchPayload;
+  /** Delete many PVersion documents, return deleted documents */
+  deleteManyPVersionsConnection: PVersionConnection;
   /**
    * Delete many Page documents
    * @deprecated Please use the new paginated many mutation (deleteManyPagesConnection)
@@ -2495,6 +3002,8 @@ export type Mutation = {
   deleteManyTags: BatchPayload;
   /** Delete many Tag documents, return deleted documents */
   deleteManyTagsConnection: TagConnection;
+  /** Delete one pVersion from _all_ existing stages. Returns deleted document. */
+  deletePVersion?: Maybe<PVersion>;
   /** Delete one page from _all_ existing stages. Returns deleted document. */
   deletePage?: Maybe<Page>;
   /** Delete and return scheduled operation */
@@ -2509,6 +3018,8 @@ export type Mutation = {
   publishAsset?: Maybe<Asset>;
   /** Publish one commend */
   publishCommend?: Maybe<Commend>;
+  /** Publish one downloadVersion */
+  publishDownloadVersion?: Maybe<DownloadVersion>;
   /** Publish one feature */
   publishFeature?: Maybe<Feature>;
   /**
@@ -2526,12 +3037,26 @@ export type Mutation = {
   /** Publish many Commend documents */
   publishManyCommendsConnection: CommendConnection;
   /**
+   * Publish many DownloadVersion documents
+   * @deprecated Please use the new paginated many mutation (publishManyDownloadVersionsConnection)
+   */
+  publishManyDownloadVersions: BatchPayload;
+  /** Publish many DownloadVersion documents */
+  publishManyDownloadVersionsConnection: DownloadVersionConnection;
+  /**
    * Publish many Feature documents
    * @deprecated Please use the new paginated many mutation (publishManyFeaturesConnection)
    */
   publishManyFeatures: BatchPayload;
   /** Publish many Feature documents */
   publishManyFeaturesConnection: FeatureConnection;
+  /**
+   * Publish many PVersion documents
+   * @deprecated Please use the new paginated many mutation (publishManyPVersionsConnection)
+   */
+  publishManyPVersions: BatchPayload;
+  /** Publish many PVersion documents */
+  publishManyPVersionsConnection: PVersionConnection;
   /**
    * Publish many Page documents
    * @deprecated Please use the new paginated many mutation (publishManyPagesConnection)
@@ -2553,6 +3078,8 @@ export type Mutation = {
   publishManyTags: BatchPayload;
   /** Publish many Tag documents */
   publishManyTagsConnection: TagConnection;
+  /** Publish one pVersion */
+  publishPVersion?: Maybe<PVersion>;
   /** Publish one page */
   publishPage?: Maybe<Page>;
   /** Publish one socialNetwork */
@@ -2563,8 +3090,12 @@ export type Mutation = {
   schedulePublishAsset?: Maybe<Asset>;
   /** Schedule to publish one commend */
   schedulePublishCommend?: Maybe<Commend>;
+  /** Schedule to publish one downloadVersion */
+  schedulePublishDownloadVersion?: Maybe<DownloadVersion>;
   /** Schedule to publish one feature */
   schedulePublishFeature?: Maybe<Feature>;
+  /** Schedule to publish one pVersion */
+  schedulePublishPVersion?: Maybe<PVersion>;
   /** Schedule to publish one page */
   schedulePublishPage?: Maybe<Page>;
   /** Schedule to publish one socialNetwork */
@@ -2575,8 +3106,12 @@ export type Mutation = {
   scheduleUnpublishAsset?: Maybe<Asset>;
   /** Unpublish one commend from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishCommend?: Maybe<Commend>;
+  /** Unpublish one downloadVersion from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishDownloadVersion?: Maybe<DownloadVersion>;
   /** Unpublish one feature from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishFeature?: Maybe<Feature>;
+  /** Unpublish one pVersion from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishPVersion?: Maybe<PVersion>;
   /** Unpublish one page from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishPage?: Maybe<Page>;
   /** Unpublish one socialNetwork from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2587,6 +3122,8 @@ export type Mutation = {
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one commend from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishCommend?: Maybe<Commend>;
+  /** Unpublish one downloadVersion from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishDownloadVersion?: Maybe<DownloadVersion>;
   /** Unpublish one feature from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishFeature?: Maybe<Feature>;
   /**
@@ -2604,12 +3141,26 @@ export type Mutation = {
   /** Find many Commend documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyCommendsConnection: CommendConnection;
   /**
+   * Unpublish many DownloadVersion documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyDownloadVersionsConnection)
+   */
+  unpublishManyDownloadVersions: BatchPayload;
+  /** Find many DownloadVersion documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyDownloadVersionsConnection: DownloadVersionConnection;
+  /**
    * Unpublish many Feature documents
    * @deprecated Please use the new paginated many mutation (unpublishManyFeaturesConnection)
    */
   unpublishManyFeatures: BatchPayload;
   /** Find many Feature documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyFeaturesConnection: FeatureConnection;
+  /**
+   * Unpublish many PVersion documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyPVersionsConnection)
+   */
+  unpublishManyPVersions: BatchPayload;
+  /** Find many PVersion documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyPVersionsConnection: PVersionConnection;
   /**
    * Unpublish many Page documents
    * @deprecated Please use the new paginated many mutation (unpublishManyPagesConnection)
@@ -2631,6 +3182,8 @@ export type Mutation = {
   unpublishManyTags: BatchPayload;
   /** Find many Tag documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyTagsConnection: TagConnection;
+  /** Unpublish one pVersion from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishPVersion?: Maybe<PVersion>;
   /** Unpublish one page from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishPage?: Maybe<Page>;
   /** Unpublish one socialNetwork from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -2641,6 +3194,8 @@ export type Mutation = {
   updateAsset?: Maybe<Asset>;
   /** Update one commend */
   updateCommend?: Maybe<Commend>;
+  /** Update one downloadVersion */
+  updateDownloadVersion?: Maybe<DownloadVersion>;
   /** Update one feature */
   updateFeature?: Maybe<Feature>;
   /**
@@ -2658,12 +3213,26 @@ export type Mutation = {
   /** Update many Commend documents */
   updateManyCommendsConnection: CommendConnection;
   /**
+   * Update many downloadVersions
+   * @deprecated Please use the new paginated many mutation (updateManyDownloadVersionsConnection)
+   */
+  updateManyDownloadVersions: BatchPayload;
+  /** Update many DownloadVersion documents */
+  updateManyDownloadVersionsConnection: DownloadVersionConnection;
+  /**
    * Update many features
    * @deprecated Please use the new paginated many mutation (updateManyFeaturesConnection)
    */
   updateManyFeatures: BatchPayload;
   /** Update many Feature documents */
   updateManyFeaturesConnection: FeatureConnection;
+  /**
+   * Update many pVersions
+   * @deprecated Please use the new paginated many mutation (updateManyPVersionsConnection)
+   */
+  updateManyPVersions: BatchPayload;
+  /** Update many PVersion documents */
+  updateManyPVersionsConnection: PVersionConnection;
   /**
    * Update many pages
    * @deprecated Please use the new paginated many mutation (updateManyPagesConnection)
@@ -2685,6 +3254,8 @@ export type Mutation = {
   updateManyTags: BatchPayload;
   /** Update many Tag documents */
   updateManyTagsConnection: TagConnection;
+  /** Update one pVersion */
+  updatePVersion?: Maybe<PVersion>;
   /** Update one page */
   updatePage?: Maybe<Page>;
   /** Update one scheduledRelease */
@@ -2697,8 +3268,12 @@ export type Mutation = {
   upsertAsset?: Maybe<Asset>;
   /** Upsert one commend */
   upsertCommend?: Maybe<Commend>;
+  /** Upsert one downloadVersion */
+  upsertDownloadVersion?: Maybe<DownloadVersion>;
   /** Upsert one feature */
   upsertFeature?: Maybe<Feature>;
+  /** Upsert one pVersion */
+  upsertPVersion?: Maybe<PVersion>;
   /** Upsert one page */
   upsertPage?: Maybe<Page>;
   /** Upsert one socialNetwork */
@@ -2718,8 +3293,18 @@ export type MutationCreateCommendArgs = {
 };
 
 
+export type MutationCreateDownloadVersionArgs = {
+  data: DownloadVersionCreateInput;
+};
+
+
 export type MutationCreateFeatureArgs = {
   data: FeatureCreateInput;
+};
+
+
+export type MutationCreatePVersionArgs = {
+  data: PVersionCreateInput;
 };
 
 
@@ -2750,6 +3335,11 @@ export type MutationDeleteAssetArgs = {
 
 export type MutationDeleteCommendArgs = {
   where: CommendWhereUniqueInput;
+};
+
+
+export type MutationDeleteDownloadVersionArgs = {
+  where: DownloadVersionWhereUniqueInput;
 };
 
 
@@ -2788,6 +3378,21 @@ export type MutationDeleteManyCommendsConnectionArgs = {
 };
 
 
+export type MutationDeleteManyDownloadVersionsArgs = {
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
+export type MutationDeleteManyDownloadVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
 export type MutationDeleteManyFeaturesArgs = {
   where?: InputMaybe<FeatureManyWhereInput>;
 };
@@ -2800,6 +3405,21 @@ export type MutationDeleteManyFeaturesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<FeatureManyWhereInput>;
+};
+
+
+export type MutationDeleteManyPVersionsArgs = {
+  where?: InputMaybe<PVersionManyWhereInput>;
+};
+
+
+export type MutationDeleteManyPVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PVersionManyWhereInput>;
 };
 
 
@@ -2848,6 +3468,11 @@ export type MutationDeleteManyTagsConnectionArgs = {
 };
 
 
+export type MutationDeletePVersionArgs = {
+  where: PVersionWhereUniqueInput;
+};
+
+
 export type MutationDeletePageArgs = {
   where: PageWhereUniqueInput;
 };
@@ -2885,6 +3510,12 @@ export type MutationPublishAssetArgs = {
 export type MutationPublishCommendArgs = {
   to?: Array<Stage>;
   where: CommendWhereUniqueInput;
+};
+
+
+export type MutationPublishDownloadVersionArgs = {
+  to?: Array<Stage>;
+  where: DownloadVersionWhereUniqueInput;
 };
 
 
@@ -2936,6 +3567,24 @@ export type MutationPublishManyCommendsConnectionArgs = {
 };
 
 
+export type MutationPublishManyDownloadVersionsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
+export type MutationPublishManyDownloadVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
 export type MutationPublishManyFeaturesArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<FeatureManyWhereInput>;
@@ -2951,6 +3600,24 @@ export type MutationPublishManyFeaturesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   to?: Array<Stage>;
   where?: InputMaybe<FeatureManyWhereInput>;
+};
+
+
+export type MutationPublishManyPVersionsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<PVersionManyWhereInput>;
+};
+
+
+export type MutationPublishManyPVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<PVersionManyWhereInput>;
 };
 
 
@@ -3008,6 +3675,12 @@ export type MutationPublishManyTagsConnectionArgs = {
 };
 
 
+export type MutationPublishPVersionArgs = {
+  to?: Array<Stage>;
+  where: PVersionWhereUniqueInput;
+};
+
+
 export type MutationPublishPageArgs = {
   to?: Array<Stage>;
   where: PageWhereUniqueInput;
@@ -3045,11 +3718,27 @@ export type MutationSchedulePublishCommendArgs = {
 };
 
 
+export type MutationSchedulePublishDownloadVersionArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  to?: Array<Stage>;
+  where: DownloadVersionWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishFeatureArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
   to?: Array<Stage>;
   where: FeatureWhereUniqueInput;
+};
+
+
+export type MutationSchedulePublishPVersionArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  to?: Array<Stage>;
+  where: PVersionWhereUniqueInput;
 };
 
 
@@ -3095,11 +3784,27 @@ export type MutationScheduleUnpublishCommendArgs = {
 };
 
 
+export type MutationScheduleUnpublishDownloadVersionArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  where: DownloadVersionWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishFeatureArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
   where: FeatureWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishPVersionArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  where: PVersionWhereUniqueInput;
 };
 
 
@@ -3138,6 +3843,12 @@ export type MutationUnpublishAssetArgs = {
 export type MutationUnpublishCommendArgs = {
   from?: Array<Stage>;
   where: CommendWhereUniqueInput;
+};
+
+
+export type MutationUnpublishDownloadVersionArgs = {
+  from?: Array<Stage>;
+  where: DownloadVersionWhereUniqueInput;
 };
 
 
@@ -3187,6 +3898,24 @@ export type MutationUnpublishManyCommendsConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyDownloadVersionsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyDownloadVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyFeaturesArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<FeatureManyWhereInput>;
@@ -3202,6 +3931,24 @@ export type MutationUnpublishManyFeaturesConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: InputMaybe<Stage>;
   where?: InputMaybe<FeatureManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyPVersionsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<PVersionManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyPVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<PVersionManyWhereInput>;
 };
 
 
@@ -3259,6 +4006,12 @@ export type MutationUnpublishManyTagsConnectionArgs = {
 };
 
 
+export type MutationUnpublishPVersionArgs = {
+  from?: Array<Stage>;
+  where: PVersionWhereUniqueInput;
+};
+
+
 export type MutationUnpublishPageArgs = {
   from?: Array<Stage>;
   where: PageWhereUniqueInput;
@@ -3286,6 +4039,12 @@ export type MutationUpdateAssetArgs = {
 export type MutationUpdateCommendArgs = {
   data: CommendUpdateInput;
   where: CommendWhereUniqueInput;
+};
+
+
+export type MutationUpdateDownloadVersionArgs = {
+  data: DownloadVersionUpdateInput;
+  where: DownloadVersionWhereUniqueInput;
 };
 
 
@@ -3329,6 +4088,23 @@ export type MutationUpdateManyCommendsConnectionArgs = {
 };
 
 
+export type MutationUpdateManyDownloadVersionsArgs = {
+  data: DownloadVersionUpdateManyInput;
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
+export type MutationUpdateManyDownloadVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  data: DownloadVersionUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<DownloadVersionManyWhereInput>;
+};
+
+
 export type MutationUpdateManyFeaturesArgs = {
   data: FeatureUpdateManyInput;
   where?: InputMaybe<FeatureManyWhereInput>;
@@ -3343,6 +4119,23 @@ export type MutationUpdateManyFeaturesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<FeatureManyWhereInput>;
+};
+
+
+export type MutationUpdateManyPVersionsArgs = {
+  data: PVersionUpdateManyInput;
+  where?: InputMaybe<PVersionManyWhereInput>;
+};
+
+
+export type MutationUpdateManyPVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  data: PVersionUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PVersionManyWhereInput>;
 };
 
 
@@ -3397,6 +4190,12 @@ export type MutationUpdateManyTagsConnectionArgs = {
 };
 
 
+export type MutationUpdatePVersionArgs = {
+  data: PVersionUpdateInput;
+  where: PVersionWhereUniqueInput;
+};
+
+
 export type MutationUpdatePageArgs = {
   data: PageUpdateInput;
   where: PageWhereUniqueInput;
@@ -3433,9 +4232,21 @@ export type MutationUpsertCommendArgs = {
 };
 
 
+export type MutationUpsertDownloadVersionArgs = {
+  upsert: DownloadVersionUpsertInput;
+  where: DownloadVersionWhereUniqueInput;
+};
+
+
 export type MutationUpsertFeatureArgs = {
   upsert: FeatureUpsertInput;
   where: FeatureWhereUniqueInput;
+};
+
+
+export type MutationUpsertPVersionArgs = {
+  upsert: PVersionUpsertInput;
+  where: PVersionWhereUniqueInput;
 };
 
 
@@ -3462,6 +4273,460 @@ export type Node = {
   id: Scalars['ID']['output'];
   /** The Stage of an object */
   stage: Stage;
+};
+
+export type PVersion = Entity & Node & {
+  __typename?: 'PVersion';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']['output'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<PVersion>;
+  downloadVersion: Array<DownloadVersion>;
+  /** List of PVersion versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID']['output'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']['output'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+  version: Scalars['String']['output'];
+};
+
+
+export type PVersionCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type PVersionDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']['input'];
+  inheritLocale?: Scalars['Boolean']['input'];
+  stages?: Array<Stage>;
+};
+
+
+export type PVersionDownloadVersionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<DownloadVersionOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<DownloadVersionWhereInput>;
+};
+
+
+export type PVersionHistoryArgs = {
+  limit?: Scalars['Int']['input'];
+  skip?: Scalars['Int']['input'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type PVersionPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type PVersionScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type PVersionUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type PVersionConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: PVersionWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type PVersionConnection = {
+  __typename?: 'PVersionConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<PVersionEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type PVersionCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  downloadVersion?: InputMaybe<DownloadVersionCreateManyInlineInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  version: Scalars['String']['input'];
+};
+
+export type PVersionCreateManyInlineInput = {
+  /** Connect multiple existing PVersion documents */
+  connect?: InputMaybe<Array<PVersionWhereUniqueInput>>;
+  /** Create and connect multiple existing PVersion documents */
+  create?: InputMaybe<Array<PVersionCreateInput>>;
+};
+
+export type PVersionCreateOneInlineInput = {
+  /** Connect one existing PVersion document */
+  connect?: InputMaybe<PVersionWhereUniqueInput>;
+  /** Create and connect one PVersion document */
+  create?: InputMaybe<PVersionCreateInput>;
+};
+
+/** An edge in a connection. */
+export type PVersionEdge = {
+  __typename?: 'PVersionEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: PVersion;
+};
+
+/** Identifies documents */
+export type PVersionManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<PVersionWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<PVersionWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<PVersionWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<PVersionWhereStageInput>;
+  documentInStages_none?: InputMaybe<PVersionWhereStageInput>;
+  documentInStages_some?: InputMaybe<PVersionWhereStageInput>;
+  downloadVersion_every?: InputMaybe<DownloadVersionWhereInput>;
+  downloadVersion_none?: InputMaybe<DownloadVersionWhereInput>;
+  downloadVersion_some?: InputMaybe<DownloadVersionWhereInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  version?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  version_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  version_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  version_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  version_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  version_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  version_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  version_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  version_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  version_starts_with?: InputMaybe<Scalars['String']['input']>;
+};
+
+export enum PVersionOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  VersionAsc = 'version_ASC',
+  VersionDesc = 'version_DESC'
+}
+
+export type PVersionUpdateInput = {
+  downloadVersion?: InputMaybe<DownloadVersionUpdateManyInlineInput>;
+  version?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PVersionUpdateManyInlineInput = {
+  /** Connect multiple existing PVersion documents */
+  connect?: InputMaybe<Array<PVersionConnectInput>>;
+  /** Create and connect multiple PVersion documents */
+  create?: InputMaybe<Array<PVersionCreateInput>>;
+  /** Delete multiple PVersion documents */
+  delete?: InputMaybe<Array<PVersionWhereUniqueInput>>;
+  /** Disconnect multiple PVersion documents */
+  disconnect?: InputMaybe<Array<PVersionWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing PVersion documents */
+  set?: InputMaybe<Array<PVersionWhereUniqueInput>>;
+  /** Update multiple PVersion documents */
+  update?: InputMaybe<Array<PVersionUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple PVersion documents */
+  upsert?: InputMaybe<Array<PVersionUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type PVersionUpdateManyInput = {
+  /** No fields in updateMany data input */
+  _?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PVersionUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: PVersionUpdateManyInput;
+  /** Document search */
+  where: PVersionWhereInput;
+};
+
+export type PVersionUpdateOneInlineInput = {
+  /** Connect existing PVersion document */
+  connect?: InputMaybe<PVersionWhereUniqueInput>;
+  /** Create and connect one PVersion document */
+  create?: InputMaybe<PVersionCreateInput>;
+  /** Delete currently connected PVersion document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Disconnect currently connected PVersion document */
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single PVersion document */
+  update?: InputMaybe<PVersionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single PVersion document */
+  upsert?: InputMaybe<PVersionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type PVersionUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: PVersionUpdateInput;
+  /** Unique document search */
+  where: PVersionWhereUniqueInput;
+};
+
+export type PVersionUpsertInput = {
+  /** Create document if it didn't exist */
+  create: PVersionCreateInput;
+  /** Update document if it exists */
+  update: PVersionUpdateInput;
+};
+
+export type PVersionUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: PVersionUpsertInput;
+  /** Unique document search */
+  where: PVersionWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type PVersionWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Identifies documents */
+export type PVersionWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<PVersionWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<PVersionWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<PVersionWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<PVersionWhereStageInput>;
+  documentInStages_none?: InputMaybe<PVersionWhereStageInput>;
+  documentInStages_some?: InputMaybe<PVersionWhereStageInput>;
+  downloadVersion_every?: InputMaybe<DownloadVersionWhereInput>;
+  downloadVersion_none?: InputMaybe<DownloadVersionWhereInput>;
+  downloadVersion_some?: InputMaybe<DownloadVersionWhereInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  version?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  version_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  version_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  version_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  version_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  version_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  version_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  version_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  version_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  version_starts_with?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type PVersionWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<PVersionWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<PVersionWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<PVersionWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<PVersionWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References PVersion record uniquely */
+export type PVersionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  version?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Page = Entity & Node & {
@@ -4086,6 +5351,14 @@ export type Query = {
   commends: Array<Commend>;
   /** Retrieve multiple commends using the Relay connection interface */
   commendsConnection: CommendConnection;
+  /** Retrieve a single downloadVersion */
+  downloadVersion?: Maybe<DownloadVersion>;
+  /** Retrieve document version */
+  downloadVersionVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple downloadVersions */
+  downloadVersions: Array<DownloadVersion>;
+  /** Retrieve multiple downloadVersions using the Relay connection interface */
+  downloadVersionsConnection: DownloadVersionConnection;
   /** Fetches an object given its ID */
   entities?: Maybe<Array<Entity>>;
   /** Retrieve a single feature */
@@ -4098,6 +5371,14 @@ export type Query = {
   featuresConnection: FeatureConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
+  /** Retrieve a single pVersion */
+  pVersion?: Maybe<PVersion>;
+  /** Retrieve document version */
+  pVersionVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple pVersions */
+  pVersions: Array<PVersion>;
+  /** Retrieve multiple pVersions using the Relay connection interface */
+  pVersionsConnection: PVersionConnection;
   /** Retrieve a single page */
   page?: Maybe<Page>;
   /** Retrieve document version */
@@ -4219,6 +5500,44 @@ export type QueryCommendsConnectionArgs = {
 };
 
 
+export type QueryDownloadVersionArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: DownloadVersionWhereUniqueInput;
+};
+
+
+export type QueryDownloadVersionVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryDownloadVersionsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<DownloadVersionOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<DownloadVersionWhereInput>;
+};
+
+
+export type QueryDownloadVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<DownloadVersionOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<DownloadVersionWhereInput>;
+};
+
+
 export type QueryEntitiesArgs = {
   locales?: InputMaybe<Array<Locale>>;
   where: Array<EntityWhereInput>;
@@ -4267,6 +5586,44 @@ export type QueryNodeArgs = {
   id: Scalars['ID']['input'];
   locales?: Array<Locale>;
   stage?: Stage;
+};
+
+
+export type QueryPVersionArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: PVersionWhereUniqueInput;
+};
+
+
+export type QueryPVersionVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryPVersionsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<PVersionOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<PVersionWhereInput>;
+};
+
+
+export type QueryPVersionsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<PVersionOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<PVersionWhereInput>;
 };
 
 
@@ -4594,7 +5951,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Commend | Feature | Page | SocialNetwork | Tag;
+export type ScheduledOperationAffectedDocument = Asset | Commend | DownloadVersion | Feature | PVersion | Page | SocialNetwork | Tag;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -6003,7 +7360,7 @@ export type Tag = Entity & Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID']['output'];
-  page?: Maybe<Page>;
+  page: Array<Page>;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   /** User that last published this document */
@@ -6040,8 +7397,15 @@ export type TagHistoryArgs = {
 
 
 export type TagPageArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
   locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<PageOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PageWhereInput>;
 };
 
 
@@ -6087,7 +7451,7 @@ export type TagConnection = {
 
 export type TagCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
-  page?: InputMaybe<PageCreateOneInlineInput>;
+  page?: InputMaybe<PageCreateManyInlineInput>;
   text: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -6163,7 +7527,9 @@ export type TagManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
-  page?: InputMaybe<PageWhereInput>;
+  page_every?: InputMaybe<PageWhereInput>;
+  page_none?: InputMaybe<PageWhereInput>;
+  page_some?: InputMaybe<PageWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -6234,7 +7600,7 @@ export enum TagOrderByInput {
 }
 
 export type TagUpdateInput = {
-  page?: InputMaybe<PageUpdateOneInlineInput>;
+  page?: InputMaybe<PageUpdateManyInlineInput>;
   text?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -6357,7 +7723,9 @@ export type TagWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
-  page?: InputMaybe<PageWhereInput>;
+  page_every?: InputMaybe<PageWhereInput>;
+  page_none?: InputMaybe<PageWhereInput>;
+  page_some?: InputMaybe<PageWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -6967,6 +8335,11 @@ export type DocEntryQueryVariables = Exact<{
 
 export type DocEntryQuery = { __typename?: 'Query', page?: { __typename?: 'Page', title: string, content?: string | null, tags: Array<{ __typename?: 'Tag', text: string }>, meta?: { __typename?: 'Meta', description?: string | null, keywords: Array<string>, image?: { __typename?: 'Asset', url: string } | null } | null } | null };
 
+export type DownloadsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DownloadsQuery = { __typename?: 'Query', downloadVersions: Array<{ __typename?: 'DownloadVersion', id: string, downloadUrl?: string | null, changeLog?: string | null, createdAt: any, pVersion?: { __typename?: 'PVersion', id: string, version: string } | null }> };
+
 export type FeaturesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -7079,6 +8452,20 @@ export const DocEntryDocument = gql`
   }
 }
     `;
+export const DownloadsDocument = gql`
+    query Downloads {
+  downloadVersions(orderBy: createdAt_DESC) {
+    id
+    downloadUrl
+    changeLog
+    createdAt
+    pVersion {
+      id
+      version
+    }
+  }
+}
+    `;
 export const FeaturesDocument = gql`
     query Features {
   features {
@@ -7142,6 +8529,7 @@ const BlogPostDocumentString = print(BlogPostDocument);
 const CommendsDocumentString = print(CommendsDocument);
 const DocEntriesDocumentString = print(DocEntriesDocument);
 const DocEntryDocumentString = print(DocEntryDocument);
+const DownloadsDocumentString = print(DownloadsDocument);
 const FeaturesDocumentString = print(FeaturesDocument);
 const LandingDocumentString = print(LandingDocument);
 const PagesDocumentString = print(PagesDocument);
@@ -7165,6 +8553,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     DocEntry(variables: DocEntryQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: DocEntryQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<DocEntryQuery>(DocEntryDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'DocEntry', 'query', variables);
+    },
+    Downloads(variables?: DownloadsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: DownloadsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<DownloadsQuery>(DownloadsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Downloads', 'query', variables);
     },
     Features(variables?: FeaturesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: FeaturesQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<FeaturesQuery>(FeaturesDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Features', 'query', variables);

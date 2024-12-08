@@ -7,15 +7,24 @@ interface LinkButtonProps {
     children: ReactElement | ReactElement[] | ReactNode | ReactNode[];
     className?: string;
     style?: CSSProperties;
+    target?: string;
 }
 
-export function LinkButton({to, children, className, style}: LinkButtonProps) {
+export function LinkButton({
+    to,
+    children,
+    className,
+    style,
+    target,
+}: LinkButtonProps) {
     return (
         <Link
             style={style}
             viewTransition
             className={`${styles.button} ${className}`}
             to={to}
+            target={target}
+            rel={target ? "noopener noreferrer" : undefined}
         >
             {children}
         </Link>

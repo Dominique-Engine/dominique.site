@@ -1,0 +1,12 @@
+query Downloads {
+    downloadVersions(orderBy: createdAt_DESC) {
+        id
+        downloadUrl
+        changeLog
+        createdAt
+        pVersion {
+            id
+            version
+        }
+    }
+}
