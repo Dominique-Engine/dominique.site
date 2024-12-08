@@ -1390,6 +1390,7 @@ export type Feature = Entity & Node & {
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID']['output'];
+  order: Scalars['Int']['output'];
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   /** User that last published this document */
@@ -1470,6 +1471,7 @@ export type FeatureCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description: Scalars['String']['input'];
   highlights?: InputMaybe<Array<Scalars['String']['input']>>;
+  order: Scalars['Int']['input'];
   title: Scalars['String']['input'];
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -1593,6 +1595,21 @@ export type FeatureManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
+  /** All values greater than the given value. */
+  order_gt?: InputMaybe<Scalars['Int']['input']>;
+  /** All values greater than or equal the given value. */
+  order_gte?: InputMaybe<Scalars['Int']['input']>;
+  /** All values that are contained in given list. */
+  order_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  /** All values less than the given value. */
+  order_lt?: InputMaybe<Scalars['Int']['input']>;
+  /** All values less than or equal the given value. */
+  order_lte?: InputMaybe<Scalars['Int']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  order_not?: InputMaybe<Scalars['Int']['input']>;
+  /** All values that are not contained in given list. */
+  order_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1660,6 +1677,8 @@ export enum FeatureOrderByInput {
   HighlightsDesc = 'highlights_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  OrderAsc = 'order_ASC',
+  OrderDesc = 'order_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
   TitleAsc = 'title_ASC',
@@ -1672,6 +1691,7 @@ export type FeatureUpdateInput = {
   content?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   highlights?: InputMaybe<Array<Scalars['String']['input']>>;
+  order?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1696,6 +1716,7 @@ export type FeatureUpdateManyInput = {
   content?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   highlights?: InputMaybe<Array<Scalars['String']['input']>>;
+  order?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1844,6 +1865,21 @@ export type FeatureWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
+  /** All values greater than the given value. */
+  order_gt?: InputMaybe<Scalars['Int']['input']>;
+  /** All values greater than or equal the given value. */
+  order_gte?: InputMaybe<Scalars['Int']['input']>;
+  /** All values that are contained in given list. */
+  order_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  /** All values less than the given value. */
+  order_lt?: InputMaybe<Scalars['Int']['input']>;
+  /** All values less than or equal the given value. */
+  order_lte?: InputMaybe<Scalars['Int']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  order_not?: InputMaybe<Scalars['Int']['input']>;
+  /** All values that are not contained in given list. */
+  order_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -5491,36 +5527,6 @@ export type ScheduledReleaseWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
-export type SearchResult = {
-  __typename?: 'SearchResult';
-  id: Scalars['ID']['output'];
-  locale: Locale;
-  matchContext: SearchResultMatchContext;
-  model: SearchResultModel;
-  stage: Stage;
-  titleFields: Array<SearchResultTitleField>;
-};
-
-export type SearchResultMatchContext = {
-  __typename?: 'SearchResultMatchContext';
-  highlight: Scalars['String']['output'];
-};
-
-export type SearchResultModel = {
-  __typename?: 'SearchResultModel';
-  apiId: Scalars['String']['output'];
-};
-
-export type SearchResultTitleField = {
-  __typename?: 'SearchResultTitleField';
-  apiId: Scalars['String']['output'];
-  value: Scalars['String']['output'];
-};
-
-export type SearchWhereInput = {
-  term: Scalars['String']['input'];
-};
-
 export type SocialNetwork = Entity & Node & {
   __typename?: 'SocialNetwork';
   /** The time the document was created */
@@ -7078,7 +7084,7 @@ export const FeaturesDocument = gql`
     `;
 export const LandingDocument = gql`
     query Landing {
-  features {
+  features(orderBy: order_ASC) {
     id
     title
     content

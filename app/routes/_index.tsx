@@ -28,11 +28,19 @@ export default function Index() {
                     highlights={highlight.highlights}
                 />
                 <TextBanner
-                    title={`Modular and simple game engine`}
-                    description={`Focus on modules independence to aid learning game engine
-                development or any independent module (rendering, physics, etc). Typescript first and webgl based.`}
-                    titleHighlights={["Modular", "simple", "game engine"]}
-                    descriptionHighlights={["modules", "Typescript", "webgl"]}
+                    title={`Creative coding reimagined`}
+                    description={`Performant and easy prototyping or full lifecycle
+                    development for stunning data visualization and generative art.
+                    Ship tailored experiences without the hassle.`}
+                    titleHighlights={["Creative", "reimagined"]}
+                    descriptionHighlights={[
+                        "Performant",
+                        "data visualization",
+                        "generative art",
+                        "Ship",
+                        "experiences",
+                    ]}
+                    highlightsOffset={2}
                 />
                 <FeatureSection
                     key={second.id}
@@ -61,18 +69,11 @@ export default function Index() {
                     />
                 ))}
                 <TextBanner
-                    title={`Creative coding reimagined`}
-                    description={`Performant and easy prototyping or full lifecycle
-                    development for stunning data visualization and generative art.
-                    Ship tailored experiences without the hassle.`}
-                    titleHighlights={["Creative", "reimagined"]}
-                    descriptionHighlights={[
-                        "Performant",
-                        "data visualization",
-                        "generative art",
-                        "Ship",
-                        "tailored experiences",
-                    ]}
+                    title={`Modular and simple`}
+                    description={`Focus on modules independence to aid learning computer graphics,
+                    rendering, physics, etc). Modern c++ and opengl`}
+                    titleHighlights={["Modular", "simple", "computer graphics"]}
+                    descriptionHighlights={["modules", "c++", "opengl"]}
                 />
                 <TextBanner sectionClassName={styles.endBanner}>
                     <div className={styles.endBannerBg}>

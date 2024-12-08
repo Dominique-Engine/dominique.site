@@ -1,5 +1,5 @@
 query Landing {
-    features {
+    features(orderBy: order_ASC) {
         id
         title
         content

@@ -11,6 +11,7 @@ interface TextBannerProps {
     titleStyle?: CSSProperties;
     children?: ReactElement | ReactElement[];
     sectionClassName?: string;
+    highlightsOffset?: number;
 }
 
 export function TextBanner({
@@ -22,6 +23,7 @@ export function TextBanner({
     titleStyle,
     children,
     sectionClassName,
+    highlightsOffset,
 }: TextBannerProps) {
     return (
         <section
@@ -33,6 +35,7 @@ export function TextBanner({
                     <TextWithHighlights
                         text={title}
                         highlights={titleHighlights}
+                        highlightsOffset={highlightsOffset}
                     />
                 </div>
             )}
@@ -41,6 +44,7 @@ export function TextBanner({
                     <TextWithHighlights
                         text={description}
                         highlights={descriptionHighlights}
+                        highlightsOffset={highlightsOffset}
                     />
                 </div>
             )}

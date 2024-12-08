@@ -3,6 +3,7 @@ import styles from "./TextWithHighlights.module.css";
 interface TextWithHighlightsProps {
     text: string;
     highlights: string[];
+    highlightsOffset?: number;
 }
 
 const highlightsNumber = 3;
@@ -10,9 +11,15 @@ const highlightsNumber = 3;
 export function TextWithHighlights({
     text,
     highlights,
+    highlightsOffset = 0,
 }: TextWithHighlightsProps) {
+    function escapeRegExp(str: string) {
+        return str.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+    }
+
+    const escapedHighlights = highlights.map(escapeRegExp);
     const textSplitted = text.split(
-        new RegExp(`(${highlights.join("|")})`, "gi")
+        new RegExp(`(${escapedHighlights.join("|")})`, "gi")
     );
     return (
         <span>
@@ -24,7 +31,7 @@ export function TextWithHighlights({
                         className={
                             highlightIndex !== -1
                                 ? styles[
-                                      `highlight${(highlightIndex % highlightsNumber) + 1}`
+                                      `highlight${((highlightIndex + highlightsOffset) % highlightsNumber) + 1}`
                                   ]
                                 : ""
                         }
