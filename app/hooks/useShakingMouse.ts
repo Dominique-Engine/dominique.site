@@ -41,5 +41,5 @@ export function useShakingMouse(cooldown = 800, strength = 3000) {
         };
     }, [isShaking, cooldown]);
 
-    return isShaking;
+    return {isShaking, setIsShaking};
 }

@@ -11,7 +11,7 @@
     z-index: 11;
     opacity: 1;
     transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: scale(20);
+    transform: scale(15);
     pointer-events: none;
 }
 

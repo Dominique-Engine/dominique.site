@@ -36,9 +36,8 @@
 .socialLink {
     text-decoration: underline;
     color: white;
-    transition:
-        color var(--anim-duration),
-        background-color var(--anim-duration);
+    transition: color var(--anim-duration),
+    background-color var(--anim-duration);
     font-size: 45px;
     padding: calc(var(--v-gap) / 2) var(--h-gap);
 
