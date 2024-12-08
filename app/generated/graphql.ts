@@ -6965,7 +6965,7 @@ export type DocEntryQueryVariables = Exact<{
 }>;
 
 
-export type DocEntryQuery = { __typename?: 'Query', page?: { __typename?: 'Page', content?: string | null, tags: Array<{ __typename?: 'Tag', text: string }> } | null };
+export type DocEntryQuery = { __typename?: 'Query', page?: { __typename?: 'Page', title: string, content?: string | null, tags: Array<{ __typename?: 'Tag', text: string }>, meta?: { __typename?: 'Meta', description?: string | null, keywords: Array<string>, image?: { __typename?: 'Asset', url: string } | null } | null } | null };
 
 export type FeaturesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -7064,9 +7064,17 @@ export const DocEntriesDocument = gql`
 export const DocEntryDocument = gql`
     query DocEntry($slug: String!) {
   page(where: {slug: $slug}) {
+    title
     content
     tags {
       text
+    }
+    meta {
+      image {
+        url
+      }
+      description
+      keywords
     }
   }
 }

@@ -15,9 +15,17 @@ query DocEntries {
 
 query DocEntry($slug: String!) {
     page(where: {slug: $slug}) {
+        title
         content
         tags {
             text
+        }
+        meta {
+            image {
+                url
+            }
+            description
+            keywords
         }
     }
 }

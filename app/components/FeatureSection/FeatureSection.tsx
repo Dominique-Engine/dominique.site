@@ -30,7 +30,13 @@ export function FeatureSection({
                             highlights={highlights}
                         />
                     </h1>
-                    <p className={styles.description}>{description}</p>
+
+                    <p className={styles.description}>
+                        <TextWithHighlights
+                            text={description}
+                            highlights={highlights}
+                        />
+                    </p>
                 </div>
                 <div className={styles.right}>
                     <Markdown rehypePlugins={[rehypeRaw, rehypeHighlight]}>

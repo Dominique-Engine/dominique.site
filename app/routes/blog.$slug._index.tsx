@@ -5,16 +5,15 @@ import {BlogPost} from "~/components/BlogPost";
 import styles from "~/styles/blogpost.module.css";
 import {Tag} from "~/components/Tag";
 import {Markdown} from "~/components/Markdown/Markdown";
+import {generateRemixMeta} from "~/utils/meta";
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
-    return [
-        {
-            title: data?.title,
-            description: data?.meta?.description,
-            keywords: data?.meta?.keywords.join(","),
-            "og:image": data?.meta?.image?.url || "/hero_engine.jpeg",
-        },
-    ];
+    return generateRemixMeta({
+        title: data?.title,
+        description: data?.meta?.description,
+        keywords: data?.meta?.keywords,
+        image: data?.meta?.image?.url,
+    });
 };
 
 export async function loader({params}: LoaderFunctionArgs) {

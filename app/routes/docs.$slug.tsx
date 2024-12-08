@@ -1,4 +1,4 @@
-import {useLoaderData} from "@remix-run/react";
+import {MetaFunction, useLoaderData} from "@remix-run/react";
 import {LoaderFunctionArgs} from "@remix-run/router";
 import {sdk} from "~/graphql/client";
 import styles from "~/styles/docentry.module.css";
@@ -6,6 +6,16 @@ import {useRouteError} from "react-router";
 import {ErrorResponseImpl} from "@remix-run/router/utils";
 import {Tag} from "~/components/Tag";
 import {Markdown} from "~/components/Markdown";
+import {generateRemixMeta} from "~/utils/meta";
+
+export const meta: MetaFunction<typeof loader> = ({data}) => {
+    return generateRemixMeta({
+        title: data?.title,
+        description: data?.meta?.description,
+        keywords: data?.meta?.keywords,
+        image: data?.meta?.image?.url,
+    });
+};
 
 export async function loader({params}: LoaderFunctionArgs) {
     if (!params.slug) {
