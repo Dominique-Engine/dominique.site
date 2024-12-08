@@ -49,7 +49,7 @@ Make sure to deploy the output of `npm run build`
 Source algolia with:
 
 ```bash
-bun ./scripts/algolia.js
+bun ./scripts/algolia.ts
 ```
 
 
