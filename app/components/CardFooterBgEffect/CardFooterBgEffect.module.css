@@ -1,9 +1,25 @@
-.svg {
-    width: 100%;
-    height: 100%;
+.obj1, .obj2, .obj3 {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    transform: scale(1.5);
+    left: -40%;
+    width: 200%;
+    height: 100%;
+    /*opacity: 0.2;*/
+}
+
+.obj1 {
+    top: 10%;
+    /*background: var(--brand-color-yellow);*/
+    /*background: var(--brand-color-gray);*/
+    background: var(--brand-color-blue);
+}
+
+.obj2 {
+    top: -40%;
+    background: var(--color-bg);
+}
+
+.obj3 {
+    top: -80%;
+    background: var(--brand-color-red);
+    /*background: var(--brand-color-yellow);*/
 }
