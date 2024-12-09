@@ -1,7 +1,6 @@
 import styles from "./CardFooterBgEffect.module.css";
 import {useMousePosition} from "~/hooks/useMousePosition";
 import {useEffect, useRef} from "react";
-import {useDebounced} from "~/hooks";
 
 export function CardFooterBgEffect() {
     const mPos = useMousePosition();

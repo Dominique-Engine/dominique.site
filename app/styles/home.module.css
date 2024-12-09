@@ -22,6 +22,19 @@
     overflow: hidden;
 }
 
+.endBannerBgSmall {
+    border-radius: calc(6 * var(--border-radius));
+    background-color: var(--code-color-bg);
+    /*width: 100%;*/
+    height: calc(65px + calc(var(--v-gap)* 6));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin: var(--v-gap) var(--h-gap);
+}
+
 .endBannerText {
     z-index: 1;
 }

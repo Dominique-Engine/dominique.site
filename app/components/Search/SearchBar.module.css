@@ -62,8 +62,6 @@
 }
 
 .searchBtn:hover {
-    cursor: pointer;
-
     svg {
         fill: var(--brand-color-yellow);
     }

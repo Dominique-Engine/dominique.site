@@ -3,6 +3,8 @@ import {useLoaderData, Link, Outlet, useLocation} from "@remix-run/react";
 import styles from "~/styles/docs.module.css";
 import {DOC_DESCRIPTION, DOC_TITLE} from "~/constants/client";
 import type {MetaFunction} from "@remix-run/node";
+import {CardFooterBgEffect} from "~/components/CardFooterBgEffect";
+import hstyles from "~/styles/home.module.css";
 
 export const meta: MetaFunction = () => {
     return [
@@ -70,6 +72,9 @@ export default function Docs() {
                     <Outlet />
                 </section>
             </article>
+
+            <div className={hstyles.endBannerBgSmall}>
+            </div>
         </main>
     );
 }

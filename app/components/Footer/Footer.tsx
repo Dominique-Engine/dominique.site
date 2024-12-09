@@ -1,14 +1,15 @@
 import styles from "./Footer.module.css";
-import {FaGithub, FaTwitter, FaYoutube} from "react-icons/fa";
+import {FaDiscord, FaGithub, FaTwitter, FaYoutube} from "react-icons/fa";
 import {ScrollToTop} from "~/components/ScrollToTop";
 
 interface FooterProps {
     github?: string;
     x?: string;
     youtube?: string;
+    discord?: string;
 }
 
-export function Footer({github, x = "/#", youtube = "/#"}: FooterProps) {
+export function Footer({github, x = "/#", discord = "/#", youtube}: FooterProps) {
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
@@ -44,6 +45,17 @@ export function Footer({github, x = "/#", youtube = "/#"}: FooterProps) {
                             href={youtube}
                         >
                             <FaYoutube />
+                        </a>
+                    )}
+                    {discord && (
+                        <a
+                            className={styles.socialLink}
+                            target="_blank"
+                            referrerPolicy="no-referrer"
+                            rel="noopener noreferrer"
+                            href={discord}
+                        >
+                            <FaDiscord />
                         </a>
                     )}
                     <ScrollToTop />

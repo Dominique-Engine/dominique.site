@@ -4,6 +4,7 @@ import {BlogCard} from "~/components/BlogCard";
 import styles from "~/styles/blogs.module.css";
 import type {MetaFunction} from "@remix-run/node";
 import {BLOG_DESCRIPTION, BLOG_TITLE} from "~/constants/client";
+import hstyles from "~/styles/home.module.css";
 
 export const meta: MetaFunction = () => {
     return [
@@ -41,6 +42,8 @@ export default function Blog() {
                     ))}
                 </ul>
             </article>
+            <div className={hstyles.endBannerBgSmall}>
+            </div>
         </main>
     );
 }

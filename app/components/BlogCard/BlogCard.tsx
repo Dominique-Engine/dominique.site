@@ -18,7 +18,7 @@ export function BlogCard({
     date,
     description,
 }: BlogCardProps) {
-    const isTransitioning = useViewTransitionState(`/blog/${slug}`);
+    const isTransitioning = useViewTransitionState(`/learn/${slug}`);
 
     return (
         <div className={styles.container}>
@@ -26,7 +26,7 @@ export function BlogCard({
                 <Link
                     viewTransition
                     className={styles.title}
-                    to={`/blog/${slug}`}
+                    to={`/learn/${slug}`}
                 >
                     <img
                         className={styles.image}
@@ -47,7 +47,7 @@ export function BlogCard({
                 <Link
                     viewTransition
                     className={styles.title}
-                    to={`/blog/${slug}`}
+                    to={`/learn/${slug}`}
                     style={{
                         viewTransitionName: isTransitioning
                             ? "title"

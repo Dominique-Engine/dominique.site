@@ -6,6 +6,7 @@ import styles from "~/styles/blogpost.module.css";
 import {Tag} from "~/components/Tag";
 import {Markdown} from "~/components/Markdown/Markdown";
 import {generateRemixMeta} from "~/utils/meta";
+import hstyles from "~/styles/home.module.css";
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
     return generateRemixMeta({
@@ -49,6 +50,8 @@ export default function BlogEntry() {
                     {data.content && <Markdown content={data.content} />}
                 </BlogPost>
             </section>
+            <div className={hstyles.endBannerBgSmall}>
+            </div>
         </main>
     );
 }

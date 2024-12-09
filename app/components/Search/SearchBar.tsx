@@ -97,7 +97,7 @@ export function SearchBar() {
                     )}
                     {results.map((result, i) => (
                         <Link
-                            to={`/${result.type === PageType.BlogPost ? "blog" : "docs"}/${encodeURIComponent(result.slug)}`}
+                            to={`/${result.type === PageType.BlogPost ? "learn" : "docs"}/${encodeURIComponent(result.slug)}`}
                             key={i}
                             onClick={() => dialogRef.current?.close()}
                         >

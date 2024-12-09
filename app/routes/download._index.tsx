@@ -6,6 +6,7 @@ import {useLoaderData} from "@remix-run/react";
 import {Markdown} from "~/components/Markdown";
 import {useEffect, useState} from "react";
 import {LinkButton} from "~/components/LinkButton";
+import hstyles from "~/styles/home.module.css";
 
 export const meta: MetaFunction = () => {
     return [
@@ -39,11 +40,11 @@ export default function Download() {
                             <li
                                 className={`${styles.link}
                                                 ${
-                                                    index ===
-                                                    (changeLog || -10) - 1
-                                                        ? styles.active
-                                                        : ""
-                                                }`}
+                                    index ===
+                                    (changeLog || -10) - 1
+                                        ? styles.active
+                                        : ""
+                                }`}
                                 key={version.id}
                                 value={version.id}
                                 onClick={() => {
@@ -73,6 +74,8 @@ export default function Download() {
                     )}
                 </section>
             </article>
+            <div className={hstyles.endBannerBgSmall}>
+            </div>
         </main>
     );
 }

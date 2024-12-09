@@ -16,7 +16,7 @@ export function NavBar() {
                     <HeaderLink to="/docs/introduction%2Finstallation">
                         Doc
                     </HeaderLink>
-                    <HeaderLink to="/blog">Blog</HeaderLink>
+                    <HeaderLink to="/learn">Learn</HeaderLink>
                     <HeaderLink to="/download">Download</HeaderLink>
                     {/*<HeaderLink to="/playground">Playground</HeaderLink>*/}
                     <SearchBar />

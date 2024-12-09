@@ -6,6 +6,7 @@
     padding: calc(var(--v-gap) / 2) var(--h-gap);
     color: var(--color-text);
     transition: color var(--anim-duration);
+    cursor: pointer;
 }
 
 .link.active {
