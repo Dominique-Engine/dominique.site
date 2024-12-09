@@ -9,7 +9,7 @@ export function Elephant() {
     const EYE_MOVE_FACTOR_Y = 25;
     return (
         <svg
-            fill="#000000"
+            fill="currentColor"
             height="300px"
             width="300px"
             version="1.1"

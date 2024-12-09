@@ -3,13 +3,14 @@ import {useLoaderData} from "@remix-run/react";
 import {BlogCard} from "~/components/BlogCard";
 import styles from "~/styles/blogs.module.css";
 import type {MetaFunction} from "@remix-run/node";
-import {BLOG_DESCRIPTION, BLOG_TITLE} from "~/constants/client";
+import {BASE_KEYWORDS, BLOG_DESCRIPTION, BLOG_TITLE} from "~/constants/client";
 import hstyles from "~/styles/home.module.css";
 
 export const meta: MetaFunction = () => {
     return [
         {title: BLOG_TITLE},
         {name: "description", content: BLOG_DESCRIPTION},
+        {name: "keywords", content: BASE_KEYWORDS.join(",")},
     ];
 };
 

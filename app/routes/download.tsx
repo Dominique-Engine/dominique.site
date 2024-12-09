@@ -1,6 +1,6 @@
 import styles from "~/styles/download.module.css";
 import {sdk} from "~/graphql/client";
-import {DOWNLOAD_DESCRIPTION, DOWNLOAD_TITLE} from "~/constants/client";
+import {BASE_KEYWORDS, DOWNLOAD_DESCRIPTION, DOWNLOAD_TITLE} from "~/constants/client";
 import type {MetaFunction} from "@remix-run/node";
 import {Link, Outlet, useLoaderData, useLocation} from "@remix-run/react";
 import hstyles from "~/styles/home.module.css";
@@ -9,6 +9,7 @@ export const meta: MetaFunction = () => {
     return [
         {title: DOWNLOAD_TITLE},
         {name: "description", content: DOWNLOAD_DESCRIPTION},
+        {name: "keywords", content: BASE_KEYWORDS.join(",")},
     ];
 };
 

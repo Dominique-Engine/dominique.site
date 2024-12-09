@@ -1,5 +1,5 @@
 import {sdk} from "~/graphql/client";
-import {DOWNLOAD_DESCRIPTION, DOWNLOAD_TITLE} from "~/constants/client";
+import {BASE_KEYWORDS, DOWNLOAD_DESCRIPTION, DOWNLOAD_TITLE} from "~/constants/client";
 import type {MetaFunction} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 import {Markdown} from "~/components/Markdown";
@@ -10,6 +10,7 @@ export const meta: MetaFunction = () => {
     return [
         {title: DOWNLOAD_TITLE},
         {name: "description", content: DOWNLOAD_DESCRIPTION},
+        {name: "keywords", content: BASE_KEYWORDS.join(",")},
     ];
 };
 

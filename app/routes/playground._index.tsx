@@ -2,7 +2,7 @@ import styles from "~/styles/playground.module.css";
 import Editor from "@monaco-editor/react";
 import {useEffect, useState} from "react";
 import {sdk} from "~/graphql/client";
-import {PLAYGROUND_DESCRIPTION, PLAYGROUND_TITLE} from "~/constants/client";
+import {BASE_KEYWORDS, PLAYGROUND_DESCRIPTION, PLAYGROUND_TITLE} from "~/constants/client";
 import type {MetaFunction} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 import {extractCode} from "~/utils/code";
@@ -12,6 +12,7 @@ export const meta: MetaFunction = () => {
     return [
         {title: PLAYGROUND_TITLE},
         {name: "description", content: PLAYGROUND_DESCRIPTION},
+        {name: "keywords", content: BASE_KEYWORDS.join(",")},
     ];
 };
 

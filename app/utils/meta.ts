@@ -1,3 +1,5 @@
+import {BASE_KEYWORDS} from "~/constants/client";
+
 type MetaParams = {
     title?: string;
     description?: string | null;
@@ -10,7 +12,7 @@ type MetaParams = {
 export function generateRemixMeta({
     title,
     description,
-    keywords,
+    keywords = BASE_KEYWORDS,
     image,
 }: MetaParams) {
     return [

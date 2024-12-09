@@ -1292,6 +1292,480 @@ export type ConnectPositionInput = {
   start?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type Contributor = Entity & Node & {
+  __typename?: 'Contributor';
+  /** The time the document was created */
+  createdAt: Scalars['DateTime']['output'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Contributor>;
+  /** List of Contributor versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  role?: Maybe<Scalars['String']['output']>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime']['output'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+};
+
+
+export type ContributorCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ContributorDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean']['input'];
+  inheritLocale?: Scalars['Boolean']['input'];
+  stages?: Array<Stage>;
+};
+
+
+export type ContributorHistoryArgs = {
+  limit?: Scalars['Int']['input'];
+  skip?: Scalars['Int']['input'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type ContributorPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type ContributorScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type ContributorUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type ContributorConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ContributorWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type ContributorConnection = {
+  __typename?: 'ContributorConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<ContributorEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type ContributorCreateInput = {
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type ContributorCreateManyInlineInput = {
+  /** Connect multiple existing Contributor documents */
+  connect?: InputMaybe<Array<ContributorWhereUniqueInput>>;
+  /** Create and connect multiple existing Contributor documents */
+  create?: InputMaybe<Array<ContributorCreateInput>>;
+};
+
+export type ContributorCreateOneInlineInput = {
+  /** Connect one existing Contributor document */
+  connect?: InputMaybe<ContributorWhereUniqueInput>;
+  /** Create and connect one Contributor document */
+  create?: InputMaybe<ContributorCreateInput>;
+};
+
+/** An edge in a connection. */
+export type ContributorEdge = {
+  __typename?: 'ContributorEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: Contributor;
+};
+
+/** Identifies documents */
+export type ContributorManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ContributorWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ContributorWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ContributorWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ContributorWhereStageInput>;
+  documentInStages_none?: InputMaybe<ContributorWhereStageInput>;
+  documentInStages_some?: InputMaybe<ContributorWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  role_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  role_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  role_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  role_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  role_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  role_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  role_starts_with?: InputMaybe<Scalars['String']['input']>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+export enum ContributorOrderByInput {
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  RoleAsc = 'role_ASC',
+  RoleDesc = 'role_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC'
+}
+
+export type ContributorUpdateInput = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ContributorUpdateManyInlineInput = {
+  /** Connect multiple existing Contributor documents */
+  connect?: InputMaybe<Array<ContributorConnectInput>>;
+  /** Create and connect multiple Contributor documents */
+  create?: InputMaybe<Array<ContributorCreateInput>>;
+  /** Delete multiple Contributor documents */
+  delete?: InputMaybe<Array<ContributorWhereUniqueInput>>;
+  /** Disconnect multiple Contributor documents */
+  disconnect?: InputMaybe<Array<ContributorWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Contributor documents */
+  set?: InputMaybe<Array<ContributorWhereUniqueInput>>;
+  /** Update multiple Contributor documents */
+  update?: InputMaybe<Array<ContributorUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Contributor documents */
+  upsert?: InputMaybe<Array<ContributorUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ContributorUpdateManyInput = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ContributorUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: ContributorUpdateManyInput;
+  /** Document search */
+  where: ContributorWhereInput;
+};
+
+export type ContributorUpdateOneInlineInput = {
+  /** Connect existing Contributor document */
+  connect?: InputMaybe<ContributorWhereUniqueInput>;
+  /** Create and connect one Contributor document */
+  create?: InputMaybe<ContributorCreateInput>;
+  /** Delete currently connected Contributor document */
+  delete?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Disconnect currently connected Contributor document */
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+  /** Update single Contributor document */
+  update?: InputMaybe<ContributorUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Contributor document */
+  upsert?: InputMaybe<ContributorUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ContributorUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: ContributorUpdateInput;
+  /** Unique document search */
+  where: ContributorWhereUniqueInput;
+};
+
+export type ContributorUpsertInput = {
+  /** Create document if it didn't exist */
+  create: ContributorCreateInput;
+  /** Update document if it exists */
+  update: ContributorUpdateInput;
+};
+
+export type ContributorUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: ContributorUpsertInput;
+  /** Unique document search */
+  where: ContributorWhereUniqueInput;
+};
+
+/** This contains a set of filters that can be used to compare values internally */
+export type ContributorWhereComparatorInput = {
+  /** This field can be used to request to check if the entry is outdated by internal comparison */
+  outdated_to?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Identifies documents */
+export type ContributorWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ContributorWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ContributorWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ContributorWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  documentInStages_every?: InputMaybe<ContributorWhereStageInput>;
+  documentInStages_none?: InputMaybe<ContributorWhereStageInput>;
+  documentInStages_some?: InputMaybe<ContributorWhereStageInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  id_not?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']['input']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  role_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  role_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  role_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  role_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  role_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  role_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  role_starts_with?: InputMaybe<Scalars['String']['input']>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  /** Any other value that exists and is not equal to the given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']['input']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+};
+
+/** The document in stages filter allows specifying a stage entry to cross compare the same document between different stages */
+export type ContributorWhereStageInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<ContributorWhereStageInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<ContributorWhereStageInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<ContributorWhereStageInput>>;
+  /** This field contains fields which can be set as true or false to specify an internal comparison */
+  compareWithParent?: InputMaybe<ContributorWhereComparatorInput>;
+  /** Specify the stage to compare with */
+  stage?: InputMaybe<Stage>;
+};
+
+/** References Contributor record uniquely */
+export type ContributorWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export enum DocumentFileTypes {
   /** Automatically selects the best format for the image based on the browser's capabilities. */
   AutoImage = 'autoImage',
@@ -1837,6 +2311,7 @@ export enum EntityTypeName {
   /** Asset system model */
   Asset = 'Asset',
   Commend = 'Commend',
+  Contributor = 'Contributor',
   DownloadVersion = 'DownloadVersion',
   Feature = 'Feature',
   Meta = 'Meta',
@@ -2924,6 +3399,8 @@ export type Mutation = {
   createAsset?: Maybe<Asset>;
   /** Create one commend */
   createCommend?: Maybe<Commend>;
+  /** Create one contributor */
+  createContributor?: Maybe<Contributor>;
   /** Create one downloadVersion */
   createDownloadVersion?: Maybe<DownloadVersion>;
   /** Create one feature */
@@ -2942,6 +3419,8 @@ export type Mutation = {
   deleteAsset?: Maybe<Asset>;
   /** Delete one commend from _all_ existing stages. Returns deleted document. */
   deleteCommend?: Maybe<Commend>;
+  /** Delete one contributor from _all_ existing stages. Returns deleted document. */
+  deleteContributor?: Maybe<Contributor>;
   /** Delete one downloadVersion from _all_ existing stages. Returns deleted document. */
   deleteDownloadVersion?: Maybe<DownloadVersion>;
   /** Delete one feature from _all_ existing stages. Returns deleted document. */
@@ -2960,6 +3439,13 @@ export type Mutation = {
   deleteManyCommends: BatchPayload;
   /** Delete many Commend documents, return deleted documents */
   deleteManyCommendsConnection: CommendConnection;
+  /**
+   * Delete many Contributor documents
+   * @deprecated Please use the new paginated many mutation (deleteManyContributorsConnection)
+   */
+  deleteManyContributors: BatchPayload;
+  /** Delete many Contributor documents, return deleted documents */
+  deleteManyContributorsConnection: ContributorConnection;
   /**
    * Delete many DownloadVersion documents
    * @deprecated Please use the new paginated many mutation (deleteManyDownloadVersionsConnection)
@@ -3018,6 +3504,8 @@ export type Mutation = {
   publishAsset?: Maybe<Asset>;
   /** Publish one commend */
   publishCommend?: Maybe<Commend>;
+  /** Publish one contributor */
+  publishContributor?: Maybe<Contributor>;
   /** Publish one downloadVersion */
   publishDownloadVersion?: Maybe<DownloadVersion>;
   /** Publish one feature */
@@ -3036,6 +3524,13 @@ export type Mutation = {
   publishManyCommends: BatchPayload;
   /** Publish many Commend documents */
   publishManyCommendsConnection: CommendConnection;
+  /**
+   * Publish many Contributor documents
+   * @deprecated Please use the new paginated many mutation (publishManyContributorsConnection)
+   */
+  publishManyContributors: BatchPayload;
+  /** Publish many Contributor documents */
+  publishManyContributorsConnection: ContributorConnection;
   /**
    * Publish many DownloadVersion documents
    * @deprecated Please use the new paginated many mutation (publishManyDownloadVersionsConnection)
@@ -3090,6 +3585,8 @@ export type Mutation = {
   schedulePublishAsset?: Maybe<Asset>;
   /** Schedule to publish one commend */
   schedulePublishCommend?: Maybe<Commend>;
+  /** Schedule to publish one contributor */
+  schedulePublishContributor?: Maybe<Contributor>;
   /** Schedule to publish one downloadVersion */
   schedulePublishDownloadVersion?: Maybe<DownloadVersion>;
   /** Schedule to publish one feature */
@@ -3106,6 +3603,8 @@ export type Mutation = {
   scheduleUnpublishAsset?: Maybe<Asset>;
   /** Unpublish one commend from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishCommend?: Maybe<Commend>;
+  /** Unpublish one contributor from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishContributor?: Maybe<Contributor>;
   /** Unpublish one downloadVersion from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishDownloadVersion?: Maybe<DownloadVersion>;
   /** Unpublish one feature from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3122,6 +3621,8 @@ export type Mutation = {
   unpublishAsset?: Maybe<Asset>;
   /** Unpublish one commend from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishCommend?: Maybe<Commend>;
+  /** Unpublish one contributor from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishContributor?: Maybe<Contributor>;
   /** Unpublish one downloadVersion from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishDownloadVersion?: Maybe<DownloadVersion>;
   /** Unpublish one feature from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -3140,6 +3641,13 @@ export type Mutation = {
   unpublishManyCommends: BatchPayload;
   /** Find many Commend documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyCommendsConnection: CommendConnection;
+  /**
+   * Unpublish many Contributor documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyContributorsConnection)
+   */
+  unpublishManyContributors: BatchPayload;
+  /** Find many Contributor documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyContributorsConnection: ContributorConnection;
   /**
    * Unpublish many DownloadVersion documents
    * @deprecated Please use the new paginated many mutation (unpublishManyDownloadVersionsConnection)
@@ -3194,6 +3702,8 @@ export type Mutation = {
   updateAsset?: Maybe<Asset>;
   /** Update one commend */
   updateCommend?: Maybe<Commend>;
+  /** Update one contributor */
+  updateContributor?: Maybe<Contributor>;
   /** Update one downloadVersion */
   updateDownloadVersion?: Maybe<DownloadVersion>;
   /** Update one feature */
@@ -3212,6 +3722,13 @@ export type Mutation = {
   updateManyCommends: BatchPayload;
   /** Update many Commend documents */
   updateManyCommendsConnection: CommendConnection;
+  /**
+   * Update many contributors
+   * @deprecated Please use the new paginated many mutation (updateManyContributorsConnection)
+   */
+  updateManyContributors: BatchPayload;
+  /** Update many Contributor documents */
+  updateManyContributorsConnection: ContributorConnection;
   /**
    * Update many downloadVersions
    * @deprecated Please use the new paginated many mutation (updateManyDownloadVersionsConnection)
@@ -3268,6 +3785,8 @@ export type Mutation = {
   upsertAsset?: Maybe<Asset>;
   /** Upsert one commend */
   upsertCommend?: Maybe<Commend>;
+  /** Upsert one contributor */
+  upsertContributor?: Maybe<Contributor>;
   /** Upsert one downloadVersion */
   upsertDownloadVersion?: Maybe<DownloadVersion>;
   /** Upsert one feature */
@@ -3290,6 +3809,11 @@ export type MutationCreateAssetArgs = {
 
 export type MutationCreateCommendArgs = {
   data: CommendCreateInput;
+};
+
+
+export type MutationCreateContributorArgs = {
+  data: ContributorCreateInput;
 };
 
 
@@ -3338,6 +3862,11 @@ export type MutationDeleteCommendArgs = {
 };
 
 
+export type MutationDeleteContributorArgs = {
+  where: ContributorWhereUniqueInput;
+};
+
+
 export type MutationDeleteDownloadVersionArgs = {
   where: DownloadVersionWhereUniqueInput;
 };
@@ -3375,6 +3904,21 @@ export type MutationDeleteManyCommendsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CommendManyWhereInput>;
+};
+
+
+export type MutationDeleteManyContributorsArgs = {
+  where?: InputMaybe<ContributorManyWhereInput>;
+};
+
+
+export type MutationDeleteManyContributorsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ContributorManyWhereInput>;
 };
 
 
@@ -3513,6 +4057,12 @@ export type MutationPublishCommendArgs = {
 };
 
 
+export type MutationPublishContributorArgs = {
+  to?: Array<Stage>;
+  where: ContributorWhereUniqueInput;
+};
+
+
 export type MutationPublishDownloadVersionArgs = {
   to?: Array<Stage>;
   where: DownloadVersionWhereUniqueInput;
@@ -3564,6 +4114,24 @@ export type MutationPublishManyCommendsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   to?: Array<Stage>;
   where?: InputMaybe<CommendManyWhereInput>;
+};
+
+
+export type MutationPublishManyContributorsArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<ContributorManyWhereInput>;
+};
+
+
+export type MutationPublishManyContributorsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<ContributorManyWhereInput>;
 };
 
 
@@ -3718,6 +4286,14 @@ export type MutationSchedulePublishCommendArgs = {
 };
 
 
+export type MutationSchedulePublishContributorArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  to?: Array<Stage>;
+  where: ContributorWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishDownloadVersionArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
   releaseId?: InputMaybe<Scalars['String']['input']>;
@@ -3784,6 +4360,14 @@ export type MutationScheduleUnpublishCommendArgs = {
 };
 
 
+export type MutationScheduleUnpublishContributorArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
+  releaseId?: InputMaybe<Scalars['String']['input']>;
+  where: ContributorWhereUniqueInput;
+};
+
+
 export type MutationScheduleUnpublishDownloadVersionArgs = {
   from?: Array<Stage>;
   releaseAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -3846,6 +4430,12 @@ export type MutationUnpublishCommendArgs = {
 };
 
 
+export type MutationUnpublishContributorArgs = {
+  from?: Array<Stage>;
+  where: ContributorWhereUniqueInput;
+};
+
+
 export type MutationUnpublishDownloadVersionArgs = {
   from?: Array<Stage>;
   where: DownloadVersionWhereUniqueInput;
@@ -3895,6 +4485,24 @@ export type MutationUnpublishManyCommendsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: InputMaybe<Stage>;
   where?: InputMaybe<CommendManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyContributorsArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<ContributorManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyContributorsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<ContributorManyWhereInput>;
 };
 
 
@@ -4042,6 +4650,12 @@ export type MutationUpdateCommendArgs = {
 };
 
 
+export type MutationUpdateContributorArgs = {
+  data: ContributorUpdateInput;
+  where: ContributorWhereUniqueInput;
+};
+
+
 export type MutationUpdateDownloadVersionArgs = {
   data: DownloadVersionUpdateInput;
   where: DownloadVersionWhereUniqueInput;
@@ -4085,6 +4699,23 @@ export type MutationUpdateManyCommendsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<CommendManyWhereInput>;
+};
+
+
+export type MutationUpdateManyContributorsArgs = {
+  data: ContributorUpdateManyInput;
+  where?: InputMaybe<ContributorManyWhereInput>;
+};
+
+
+export type MutationUpdateManyContributorsConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']['input']>;
+  before?: InputMaybe<Scalars['ID']['input']>;
+  data: ContributorUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ContributorManyWhereInput>;
 };
 
 
@@ -4229,6 +4860,12 @@ export type MutationUpsertAssetArgs = {
 export type MutationUpsertCommendArgs = {
   upsert: CommendUpsertInput;
   where: CommendWhereUniqueInput;
+};
+
+
+export type MutationUpsertContributorArgs = {
+  upsert: ContributorUpsertInput;
+  where: ContributorWhereUniqueInput;
 };
 
 
@@ -5351,6 +5988,14 @@ export type Query = {
   commends: Array<Commend>;
   /** Retrieve multiple commends using the Relay connection interface */
   commendsConnection: CommendConnection;
+  /** Retrieve a single contributor */
+  contributor?: Maybe<Contributor>;
+  /** Retrieve document version */
+  contributorVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple contributors */
+  contributors: Array<Contributor>;
+  /** Retrieve multiple contributors using the Relay connection interface */
+  contributorsConnection: ContributorConnection;
   /** Retrieve a single downloadVersion */
   downloadVersion?: Maybe<DownloadVersion>;
   /** Retrieve document version */
@@ -5497,6 +6142,44 @@ export type QueryCommendsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   stage?: Stage;
   where?: InputMaybe<CommendWhereInput>;
+};
+
+
+export type QueryContributorArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: ContributorWhereUniqueInput;
+};
+
+
+export type QueryContributorVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryContributorsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ContributorOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<ContributorWhereInput>;
+};
+
+
+export type QueryContributorsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<ContributorOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  stage?: Stage;
+  where?: InputMaybe<ContributorWhereInput>;
 };
 
 
@@ -5951,7 +6634,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Commend | DownloadVersion | Feature | PVersion | Page | SocialNetwork | Tag;
+export type ScheduledOperationAffectedDocument = Asset | Commend | Contributor | DownloadVersion | Feature | PVersion | Page | SocialNetwork | Tag;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -8323,6 +9006,11 @@ export type CommendsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type CommendsQuery = { __typename?: 'Query', commends: Array<{ __typename?: 'Commend', id: string, content?: string | null, name?: string | null }> };
 
+export type ContributorsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ContributorsQuery = { __typename?: 'Query', contributors: Array<{ __typename?: 'Contributor', id: string, name?: string | null, role?: string | null }> };
+
 export type DocEntriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -8431,6 +9119,15 @@ export const CommendsDocument = gql`
     id
     content
     name
+  }
+}
+    `;
+export const ContributorsDocument = gql`
+    query Contributors {
+  contributors {
+    id
+    name
+    role
   }
 }
     `;
@@ -8550,6 +9247,7 @@ const AlgoliaPostsDocumentString = print(AlgoliaPostsDocument);
 const BlogPostsDocumentString = print(BlogPostsDocument);
 const BlogPostDocumentString = print(BlogPostDocument);
 const CommendsDocumentString = print(CommendsDocument);
+const ContributorsDocumentString = print(ContributorsDocument);
 const DocEntriesDocumentString = print(DocEntriesDocument);
 const DocEntryDocumentString = print(DocEntryDocument);
 const DownloadsDocumentString = print(DownloadsDocument);
@@ -8571,6 +9269,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     Commends(variables?: CommendsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: CommendsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<CommendsQuery>(CommendsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Commends', 'query', variables);
+    },
+    Contributors(variables?: ContributorsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: ContributorsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<ContributorsQuery>(ContributorsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Contributors', 'query', variables);
     },
     DocEntries(variables?: DocEntriesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: DocEntriesQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<DocEntriesQuery>(DocEntriesDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'DocEntries', 'query', variables);

@@ -14,3 +14,24 @@ export const PLAYGROUND_DESCRIPTION =
 export const DOWNLOAD_TITLE = "Dominique Download";
 export const DOWNLOAD_DESCRIPTION =
     "An educational first creative coding platform";
+
+export const ABOUT_TITLE = "Dominique About";
+export const ABOUT_DESCRIPTION =
+    "An educational first creative coding platform";
+
+export const BASE_KEYWORDS = [
+    "Dominique",
+    "creative coding",
+    "creative",
+    "coding",
+    "educational",
+    "platform",
+    "engine",
+    "module",
+    "plug",
+    "play",
+    "interfaces",
+    "implement",
+    "opengl",
+    "glsl",
+];

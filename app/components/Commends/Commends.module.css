@@ -4,10 +4,21 @@
     overflow: hidden;
 }
 
+.commends:has(.commend:hover) {
+    .commend {
+        opacity: 0.2;
+    }
+}
+
 .commend {
     width: fit-content !important;
     user-select: none;
     padding-right: var(--v-gap);
+    transition: opacity 0.3s var(--cool-easing);
+
+    &:hover {
+        opacity: 1 !important;
+    }
 }
 
 .sliderWrapper {

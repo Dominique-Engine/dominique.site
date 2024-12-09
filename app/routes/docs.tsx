@@ -1,15 +1,15 @@
 import {sdk} from "~/graphql/client";
 import {useLoaderData, Link, Outlet, useLocation} from "@remix-run/react";
 import styles from "~/styles/docs.module.css";
-import {DOC_DESCRIPTION, DOC_TITLE} from "~/constants/client";
+import {BASE_KEYWORDS, DOC_DESCRIPTION, DOC_TITLE} from "~/constants/client";
 import type {MetaFunction} from "@remix-run/node";
-import {CardFooterBgEffect} from "~/components/CardFooterBgEffect";
 import hstyles from "~/styles/home.module.css";
 
 export const meta: MetaFunction = () => {
     return [
         {title: DOC_TITLE},
         {name: "description", content: DOC_DESCRIPTION},
+        {name: "keywords", content: BASE_KEYWORDS.join(",")},
     ];
 };
 

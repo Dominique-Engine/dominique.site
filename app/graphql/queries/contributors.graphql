@@ -1,0 +1,7 @@
+query Contributors {
+    contributors {
+        id
+        name
+        role
+    }
+}

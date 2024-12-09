@@ -11,7 +11,7 @@ import {NavBar} from "~/components/NavBar";
 import {Footer} from "~/components/Footer";
 import {LinksFunction} from "@remix-run/server-runtime";
 import type {MetaFunction} from "@remix-run/node";
-import {SITE_DESCRIPTION, SITE_TITLE} from "~/constants/client";
+import {BASE_KEYWORDS, SITE_DESCRIPTION, SITE_TITLE} from "~/constants/client";
 import {sdk} from "~/graphql/client";
 
 import "~/styles/reset.css";
@@ -40,6 +40,7 @@ export const meta: MetaFunction = () => {
     return [
         {title: SITE_TITLE},
         {name: "description", content: SITE_DESCRIPTION},
+        {name: "keywords", content: BASE_KEYWORDS.join(",")},
     ];
 };
 
