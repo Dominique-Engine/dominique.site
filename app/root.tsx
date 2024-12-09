@@ -44,6 +44,12 @@ export const meta: MetaFunction = () => {
     ];
 };
 
+export function headers() {
+    return {
+        "Cache-Control": "public, max-age=30, s-maxage=3600",
+    };
+}
+
 export async function loader() {
     const data = await sdk.SocialNetworks();
     if (data.errors || !data.data) {
