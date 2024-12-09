@@ -69,11 +69,18 @@ export default function Index() {
                     />
                 ))}
                 <TextBanner
-                    title={`Modular and simple`}
-                    description={`Focus on modules independence to aid learning computer graphics,
-                    rendering, physics, etc). Modern c++ and opengl`}
-                    titleHighlights={["Modular", "simple", "computer graphics"]}
-                    descriptionHighlights={["modules", "c++", "opengl"]}
+                    title={`Green and simple`}
+                    description={`Modern c++ and opengl green framework,
+                    low footprint technology,
+                    focus on modules independence`}
+                    titleHighlights={["Green", "simple"]}
+                    descriptionHighlights={[
+                        "modules",
+                        "green",
+                        "c++",
+                        "opengl",
+                        "low footprint",
+                    ]}
                 />
                 <TextBanner sectionClassName={styles.endBanner}>
                     <div className={styles.endBannerBg}>
