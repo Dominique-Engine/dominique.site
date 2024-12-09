@@ -6,4 +6,13 @@ query AlgoliaPosts {
         content
         type
     }
+    downloadVersions(orderBy: createdAt_DESC) {
+        id
+        createdAt
+        pVersion {
+            id
+            version
+        }
+        changeLog
+    }
 }

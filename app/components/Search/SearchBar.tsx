@@ -29,6 +29,12 @@ type SearchResults = {
     };
 };
 
+const mapTypeToPage = {
+    [PageType.BlogPost]: "learn",
+    [PageType.DocEntry]: "docs",
+    "download_version": "download",
+};
+
 export function SearchBar() {
     const alClient = useRef<SearchClient | null>(null);
     const [results, setResults] = useState<SearchResults[]>([]);
@@ -97,7 +103,7 @@ export function SearchBar() {
                     )}
                     {results.map((result, i) => (
                         <Link
-                            to={`/${result.type === PageType.BlogPost ? "learn" : "docs"}/${encodeURIComponent(result.slug)}`}
+                            to={`/${mapTypeToPage[result.type]}/${encodeURIComponent(result.slug)}`}
                             key={i}
                             onClick={() => dialogRef.current?.close()}
                         >

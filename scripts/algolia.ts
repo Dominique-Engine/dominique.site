@@ -19,6 +19,15 @@ const processRecords = async () => {
             type: post.type,
         });
     }
+    for (const page of blogPosts.data.downloadVersions) {
+        if (!page.pVersion?.version) continue;
+        data.push({
+            slug: page.pVersion.version,
+            title: page.pVersion.version,
+            content: page.changeLog,
+            type: "download_version",
+        });
+    }
 
     await client.deleteIndex({indexName: "content_index"});
 

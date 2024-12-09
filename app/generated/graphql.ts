@@ -8304,7 +8304,7 @@ export enum _SystemDateTimeFieldVariation {
 export type AlgoliaPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AlgoliaPostsQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, title: string, slug: string, content?: string | null, type: PageType }> };
+export type AlgoliaPostsQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', id: string, title: string, slug: string, content?: string | null, type: PageType }>, downloadVersions: Array<{ __typename?: 'DownloadVersion', id: string, createdAt: any, changeLog?: string | null, pVersion?: { __typename?: 'PVersion', id: string, version: string } | null }> };
 
 export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -8376,6 +8376,15 @@ export const AlgoliaPostsDocument = gql`
     slug
     content
     type
+  }
+  downloadVersions(orderBy: createdAt_DESC) {
+    id
+    createdAt
+    pVersion {
+      id
+      version
+    }
+    changeLog
   }
 }
     `;
