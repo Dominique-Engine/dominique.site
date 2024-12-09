@@ -1,10 +1,6 @@
 import styles from "./Commends.module.css";
 import {ExperienceCard} from "~/components/ExperienceCard";
-import {Swiper, SwiperSlide, SwiperRef} from "swiper/react";
-import {FreeMode} from "swiper/modules";
-
-import "swiper/css";
-import {useEffect, useRef} from "react";
+import {useRef} from "react";
 import {useScrollPosition} from "~/hooks/useScrollPosition";
 
 interface CommendsProps {
@@ -15,42 +11,54 @@ interface CommendsProps {
     }[];
 }
 
+const clamp = (v: number, min: number, max: number) => {
+    return Math.min(Math.max(v, min), max);
+}
+
 export function Commends({commends}: CommendsProps) {
-    const swiperRef = useRef<SwiperRef>(null);
-    useScrollPosition(v => {
-        if (swiperRef.current) {
-            v = swiperRef.current.swiper.progress + (v - swiperRef.current.swiper.progress) * 0.1;
-            swiperRef.current.swiper.setProgress(v,0);
-        }
+    const ref = useRef<HTMLDivElement>(null);
+
+    const scrollToPosition = (ratio: number) => {
+        const div = ref.current;
+        if (!div) return;
+        const maxScrollLeft = div.scrollWidth - div.clientWidth;
+        div.scrollLeft = ratio * maxScrollLeft; // Horizontal scroll
+        div.scrollTo({
+            left:  clamp(ratio, 0, 1) * maxScrollLeft,
+            behavior: "smooth",
+        });
+    };
+
+    useScrollPosition((_, v) => {
+        if (!ref.current) return;
+        const div = ref.current;
+        const prev = div.scrollLeft / (div.scrollWidth - div.clientWidth);
+        const newV = prev + v * 1.3;
+        scrollToPosition(newV);
     });
 
     return (
         <div className={styles.commends}>
-            <Swiper
-                ref={swiperRef}
-                spaceBetween={50}
-                slidesPerView={"auto"}
-                freeMode
-                loop
-                modules={[FreeMode]}
-                draggable={true}
-                allowTouchMove={true}
-                onProgress={swiper => {
-                    // console.log("swiper-progress", swiper.progress);
-                    // swiperProgress.set(swiper.progress);
-                    // console.log("swiperProgress", swiperProgress.get());
-                }}
-            >
-                {commends.map(commend => (
-                    <SwiperSlide key={commend.id} className={styles.commend}>
-                        <ExperienceCard
-                            key={commend.id}
-                            content={commend.content}
-                            name={commend.name}
-                        />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            <div className={styles.sliderWrapper} ref={ref}>
+                <div
+                    className={styles.slider}
+                    style={
+                        {
+                            // width: commends.length * 100 + "vw",
+                        }
+                    }
+                >
+                    {commends.map(commend => (
+                        <div key={commend.id} className={styles.commend}>
+                            <ExperienceCard
+                                key={commend.id}
+                                content={commend.content}
+                                name={commend.name}
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }

@@ -1,9 +1,20 @@
 .commends {
     min-height: 80vh;
     scroll-snap-align: center;
+    overflow: hidden;
 }
 
 .commend {
     width: fit-content !important;
     user-select: none;
+    padding-right: var(--v-gap);
+}
+
+.sliderWrapper {
+    padding: var(--v-gap);
+    overflow: scroll;
+}
+
+.slider {
+    display: flex;
 }
