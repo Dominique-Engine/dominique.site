@@ -35,7 +35,7 @@ export default function Index() {
                 <article>
                     <div className={styles.grid}>
                         <div className={styles.logo}>
-                            <img src={"/icon.png"} alt={"Hero"} />
+                            <img src={"/DEngineNoBg.png"} alt={"Hero"} />
                         </div>
                         <TextBanner
                             title={`Meet the guys that made it possible`}

@@ -1,6 +1,6 @@
 .logo {
-    width: 300px;
-    height: 300px;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
     margin: auto;
     padding: calc(var(--v-gap) * 2);
 
@@ -17,7 +17,7 @@
     grid-template-columns: 1fr;
 
     @media (width >= 768px) {
-        grid-template-columns: 400px 1fr;
+        grid-template-columns: 500px 1fr;
     }
 }
 
