@@ -27,9 +27,7 @@ export function HeroFeature({
                         />
                     </h1>
                     <p className={styles.description}>{description}</p>
-                    <LinkButton to={"/docs/introduction%2Finstallation"}>
-                        Get started
-                    </LinkButton>
+                    <LinkButton to={"/docs"}>Get started</LinkButton>
                 </div>
                 <div className={styles.right}>
                     <Markdown content={code} />

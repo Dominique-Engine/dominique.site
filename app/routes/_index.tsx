@@ -81,16 +81,14 @@ export default function Index() {
                         "opengl",
                         "low footprint",
                     ]}
+                    highlightsOffset={1}
                 />
                 <TextBanner sectionClassName={styles.endBanner}>
                     <div className={styles.endBannerBg}>
                         <CardFooterBgEffect />
                         <p className={styles.endBannerText}>
                             Go and{" "}
-                            <Link
-                                className={styles.seizeIt}
-                                to={"/docs/introduction%2Finstallation"}
-                            >
+                            <Link className={styles.seizeIt} to={"/docs"}>
                                 seize it
                             </Link>
                         </p>

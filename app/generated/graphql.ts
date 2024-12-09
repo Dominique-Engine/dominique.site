@@ -8338,7 +8338,14 @@ export type DocEntryQuery = { __typename?: 'Query', page?: { __typename?: 'Page'
 export type DownloadsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type DownloadsQuery = { __typename?: 'Query', downloadVersions: Array<{ __typename?: 'DownloadVersion', id: string, downloadUrl?: string | null, changeLog?: string | null, createdAt: any, pVersion?: { __typename?: 'PVersion', id: string, version: string } | null }> };
+export type DownloadsQuery = { __typename?: 'Query', downloadVersions: Array<{ __typename?: 'DownloadVersion', id: string, createdAt: any, pVersion?: { __typename?: 'PVersion', id: string, version: string } | null }> };
+
+export type DownloadQueryVariables = Exact<{
+  version: Scalars['String']['input'];
+}>;
+
+
+export type DownloadQuery = { __typename?: 'Query', downloadVersions: Array<{ __typename?: 'DownloadVersion', id: string, changeLog?: string | null, downloadUrl?: string | null }> };
 
 export type FeaturesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -8456,13 +8463,20 @@ export const DownloadsDocument = gql`
     query Downloads {
   downloadVersions(orderBy: createdAt_DESC) {
     id
-    downloadUrl
-    changeLog
     createdAt
     pVersion {
       id
       version
     }
+  }
+}
+    `;
+export const DownloadDocument = gql`
+    query Download($version: String!) {
+  downloadVersions(where: {pVersion: {version: $version}}, first: 1) {
+    id
+    changeLog
+    downloadUrl
   }
 }
     `;
@@ -8530,6 +8544,7 @@ const CommendsDocumentString = print(CommendsDocument);
 const DocEntriesDocumentString = print(DocEntriesDocument);
 const DocEntryDocumentString = print(DocEntryDocument);
 const DownloadsDocumentString = print(DownloadsDocument);
+const DownloadDocumentString = print(DownloadDocument);
 const FeaturesDocumentString = print(FeaturesDocument);
 const LandingDocumentString = print(LandingDocument);
 const PagesDocumentString = print(PagesDocument);
@@ -8556,6 +8571,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     Downloads(variables?: DownloadsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: DownloadsQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<DownloadsQuery>(DownloadsDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Downloads', 'query', variables);
+    },
+    Download(variables: DownloadQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: DownloadQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
+        return withWrapper((wrappedRequestHeaders) => client.rawRequest<DownloadQuery>(DownloadDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Download', 'query', variables);
     },
     Features(variables?: FeaturesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: FeaturesQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<FeaturesQuery>(FeaturesDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Features', 'query', variables);

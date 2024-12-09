@@ -1,12 +1,18 @@
 query Downloads {
     downloadVersions(orderBy: createdAt_DESC) {
         id
-        downloadUrl
-        changeLog
         createdAt
         pVersion {
             id
             version
         }
+    }
+}
+
+query Download($version: String!) {
+    downloadVersions(where: {pVersion: {version: $version}}, first: 1) {
+        id
+        changeLog
+        downloadUrl
     }
 }

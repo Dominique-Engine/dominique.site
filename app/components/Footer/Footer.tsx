@@ -9,7 +9,12 @@ interface FooterProps {
     discord?: string;
 }
 
-export function Footer({github, x = "/#", discord = "/#", youtube}: FooterProps) {
+export function Footer({
+    github,
+    x = "/#",
+    discord = "/#",
+    youtube,
+}: FooterProps) {
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
