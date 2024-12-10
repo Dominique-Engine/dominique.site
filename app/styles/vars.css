@@ -1,8 +1,9 @@
 :root {
     --cool-easing: cubic-bezier(0.86, 0, 0.07, 1);
     --ease-wiggle: cubic-bezier(0.74, -0.6, 0.225, 1.59);
+    --ease-bouncy: cubic-bezier(0.765, 0.023, 0.216, 0.988);
 
-    --max-width: 1400px;
+    --max-width: 1200px;
 
     --color-text: #eeeeee;
     --color-bg: #121212;

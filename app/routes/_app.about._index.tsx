@@ -63,11 +63,11 @@ export default function Index() {
                             Dominique comes with no warranties, but we promise
                             you will have a great time using it, it is built by
                             developers for developers with love.
-                            <br />
-                            <br />
-                            How else can you explain this guy?
+                            {/*<br />*/}
+                            {/*<br />*/}
+                            {/*How else can you explain this guy?*/}
                         </p>
-                        <Elephant />
+                        {/*<Elephant />*/}
                     </div>
                 </article>
                 <div className={hstyles.endBannerBgSmall}></div>

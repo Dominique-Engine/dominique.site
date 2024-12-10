@@ -1,5 +1,5 @@
 import {ReactNode} from "react";
-import {Outlet, useLoaderData} from "@remix-run/react";
+import {Outlet, useLoaderData, useNavigation} from "@remix-run/react";
 import {NavBar} from "~/components/NavBar";
 import {Footer} from "~/components/Footer";
 import {sdk} from "~/graphql/client";
@@ -15,6 +15,7 @@ import {BgGrid} from "~/components/BgGrid";
 import {useRouteError} from "react-router";
 import styles from "~/styles/error.module.css";
 import {ErrorResponseImpl} from "@remix-run/router/utils";
+import {Loading} from "~/components/Loading";
 
 export async function loader() {
     const data = await sdk.SocialNetworks();
@@ -28,8 +29,11 @@ export async function loader() {
 
 export function Layout({children}: {children: ReactNode}) {
     const data = useLoaderData<typeof loader>();
+    const navigation = useNavigation();
+
     return (
         <>
+            <Loading enabled={navigation.state === "loading"} />
             <FullscreenScroll />
             <BgGrid />
             <NavBar />
