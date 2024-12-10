@@ -2,14 +2,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    /*right: 0;*/
     bottom: 0;
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.1);
     z-index: -100;
-    /*scale: 0 1;*/
-    /*animation: FullscreenScroll 1s ease-out forwards;*/
-    /*animation-timeline: scroll();*/
+}
+
+.heavy {
+    background-color: rgba(0, 0, 0, 1);
 }
 
 @keyframes FullscreenScroll {

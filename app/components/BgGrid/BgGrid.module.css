@@ -38,6 +38,17 @@
     height: 100%;
 }
 
+.heavy {
+    width: 6px;
+    border: none;
+    background: repeating-linear-gradient(
+            to bottom,
+            var(--color-text)  0px, var(--color-text) 10px,
+            transparent 5px, transparent 70px
+    );
+    opacity: 1;
+}
+
 .bg {
     position: absolute;
     top: -100px;

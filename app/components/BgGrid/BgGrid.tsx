@@ -1,6 +1,6 @@
 import styles from "./BgGrid.module.css";
 
-export function BgGrid() {
+export function BgGrid({heavy}: {heavy?: boolean}) {
     const amount = 3;
     return (
         <div className={styles.BgGrid}>
@@ -11,7 +11,10 @@ export function BgGrid() {
                 }}
             >
                 {Array.from({length: amount}).map((_, i) => (
-                    <div key={i} className={styles.row}>
+                    <div
+                        key={i}
+                        className={styles.row + " " + (heavy ? styles.heavy : "")}
+                    >
                         {Array.from({length: amount}).map((_, j) => (
                             <div key={j} className={styles.cell} />
                         ))}

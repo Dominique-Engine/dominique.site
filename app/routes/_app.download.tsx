@@ -21,7 +21,7 @@ export async function loader() {
     return {data: data.data.downloadVersions};
 }
 
-export default function Download() {
+export default function _appDownload() {
     const {data} = useLoaderData<typeof loader>();
 
     const {pathname} = useLocation();

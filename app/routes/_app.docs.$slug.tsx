@@ -22,7 +22,7 @@ export async function loader({params}: LoaderFunctionArgs) {
         throw new Response(`Not found`, {status: 404});
     }
     const data = await sdk.DocEntry({slug: params.slug});
-    if (!data) {
+    if (!data.data.page) {
         throw new Response(`Not found`, {status: 404});
     }
     return data.data.page;

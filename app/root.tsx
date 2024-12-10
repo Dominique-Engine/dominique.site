@@ -7,23 +7,16 @@ import {
     ScrollRestoration,
     useLoaderData,
 } from "@remix-run/react";
-import {NavBar} from "~/components/NavBar";
-import {Footer} from "~/components/Footer";
 import {LinksFunction} from "@remix-run/server-runtime";
 import type {MetaFunction} from "@remix-run/node";
 import {BASE_KEYWORDS, SITE_DESCRIPTION, SITE_TITLE} from "~/constants/client";
-import {sdk} from "~/graphql/client";
 
 import "~/styles/reset.css";
 import "~/styles/global.css";
 import "~/styles/typography.css";
 import "~/styles/vars.css";
-// import "~/styles/transitioning.css";
 
 import "highlight.js/styles/atom-one-dark.css";
-import {LookingGlass} from "~/components/LookingGlass";
-import {FullscreenScroll} from "~/components/FullscreenScroll";
-import {BgGrid} from "~/components/BgGrid";
 
 declare global {
     interface Window {
@@ -51,12 +44,7 @@ export function headers() {
 }
 
 export async function loader() {
-    const data = await sdk.SocialNetworks();
-    if (data.errors || !data.data) {
-        throw new Response(`Not found`, {status: 404});
-    }
     return {
-        socialNetworks: data.data.socialNetworks,
         ENV: {
             ALGOLIA_APP_ID: process.env.ALGOLIA_APP_ID,
             ALGOLIA_SEARCH_API_KEY: process.env.ALGOLIA_SEARCH_API_KEY,
@@ -89,24 +77,13 @@ export function Layout({children}: {children: ReactNode}) {
                 />
             </head>
             <body>
-                <FullscreenScroll />
-                <BgGrid />
-                <NavBar />
                 {children}
-                <Footer
-                    github={
-                        data?.socialNetworks.find(
-                            el => el.platform === "github"
-                        )?.url
-                    }
-                />
-                <LookingGlass />
                 <ScrollRestoration />
-                <script
+                {data?.ENV && <script
                     dangerouslySetInnerHTML={{
                         __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
                     }}
-                />
+                />}
                 <Scripts />
             </body>
         </html>

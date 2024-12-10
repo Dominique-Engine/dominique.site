@@ -3,7 +3,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeHighlight from "rehype-highlight";
 import styles from "./Markdown.module.css";
 
-export function Markdown({content}: {content: string}) {
+export function Markdown({content, children}: {content?: string, children?: string}) {
     return (
         <RMarkdown
             rehypePlugins={[rehypeRaw, rehypeHighlight]}
@@ -14,7 +14,7 @@ export function Markdown({content}: {content: string}) {
                 hr: props => <hr {...props} className={styles.hr} />,
             }}
         >
-            {content}
+            {content || children}
         </RMarkdown>
     );
 }

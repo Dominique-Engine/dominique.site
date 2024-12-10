@@ -7,13 +7,15 @@ interface FooterProps {
     x?: string;
     youtube?: string;
     discord?: string;
+    scrollTop?: boolean;
 }
 
 export function Footer({
     github,
-    x = "/#",
-    discord = "/#",
+    x,
+    discord,
     youtube,
+    scrollTop = true,
 }: FooterProps) {
     return (
         <footer className={styles.footer}>
@@ -63,7 +65,7 @@ export function Footer({
                             <FaDiscord />
                         </a>
                     )}
-                    <ScrollToTop />
+                    {scrollTop && <ScrollToTop />}
                 </div>
             </div>
         </footer>

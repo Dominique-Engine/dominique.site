@@ -9,8 +9,9 @@ export async function loader({request}: LoaderFunctionArgs) {
     });
 }
 
+// TODO: This is not working quite well
 export default function CatchAllPage() {
-    return null;
+    return <>asdasdasd</>;
 }
 
 export function ErrorBoundary() {
