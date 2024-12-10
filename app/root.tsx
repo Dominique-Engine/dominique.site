@@ -37,11 +37,11 @@ export const meta: MetaFunction = () => {
     ];
 };
 
-export function headers() {
-    return {
-        "Cache-Control": "public, max-age=30, s-maxage=3600",
-    };
-}
+// export function headers() {
+//     return {
+//         "Cache-Control": "public, max-age=30, s-maxage=3600",
+//     };
+// }
 
 export async function loader() {
     return {
