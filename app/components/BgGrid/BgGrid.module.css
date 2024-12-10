@@ -30,6 +30,7 @@
             transparent 5px, transparent 70px
     );
     opacity: 0.05;
+    transition: width 0.5s ease;
 }
 
 .lastRow{
