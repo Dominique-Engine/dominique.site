@@ -2,6 +2,7 @@
     --cool-easing: cubic-bezier(0.86, 0, 0.07, 1);
     --ease-wiggle: cubic-bezier(0.74, -0.6, 0.225, 1.59);
     --ease-bouncy: cubic-bezier(0.765, 0.023, 0.216, 0.988);
+    --ease-mini-bounce: cubic-bezier(0.268, 0.853, 0.138, 1.201);
 
     --max-width: 1200px;
 

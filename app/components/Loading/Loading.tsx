@@ -7,10 +7,10 @@ interface LoadingProps {
 }
 
 export function Loading({enabled}: LoadingProps) {
-    const debounced = useDebounced(enabled, 400);
+    const debounced = useDebounced(enabled, 600);
     return (
         <div className={debounced ? styles.on : styles.off}>
-            <Logo bouncing />
+            <Logo animated />
         </div>
     );
 }

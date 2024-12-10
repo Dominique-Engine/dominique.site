@@ -22,6 +22,8 @@
     align-items: center;
     justify-content: center;
     padding: var(--v-gap) var(--h-gap);
+    transform: scale(0.8);
+    animation: grow 1s forwards var(--cool-easing) 0.05s;
 }
 
 .right {
@@ -32,6 +34,8 @@
     justify-content: center;
     width: 100%;
     padding: var(--v-gap) var(--h-gap);
+    /*animation: grow 1s forwards linear(0, 0.295 12.5%, 0.453 18.3%, 0.999 33.3%, 0.808 39.7%, 0.764 42.4%, 0.75 45%, 0.763 47.4%, 0.802 50%, 0.999 57.7%, 0.921 61.7%, 0.902 63.5%, 0.897 65.2%, 0.917 68.6%, 1 74.5%, 0.971 77.4%, 0.963 80.1%, 1 88.2%, 0.993 91.8%, 1);*/
+    animation: grow 1s forwards var(--cool-easing);
 }
 
 .title {
@@ -49,4 +53,15 @@
     font-weight: 400;
     margin-bottom: 2rem;
     line-height: 1.2;
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0.8);
+        /*width: 0;*/
+    }
+    100% {
+        transform: scale(1);
+        /*width: 100%;*/
+    }
 }

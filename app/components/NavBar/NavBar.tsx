@@ -2,14 +2,16 @@ import {SITE_TITLE} from "~/constants/client";
 import {HeaderLink} from "~/components/HeaderLink";
 import styles from "./NavBar.module.css";
 import {SearchBar} from "~/components/Search";
+import {Logo} from "~/components/Logo";
 
 export function NavBar() {
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
-                <div>
+                <div className={styles.siteLogo}>
+                    <Logo small animated />
                     <HeaderLink to="/">
-                        <span className={styles.siteTitle}>{SITE_TITLE}</span>
+                        <p className={styles.siteTitle}>{SITE_TITLE}</p>
                     </HeaderLink>
                 </div>
                 <div className={styles.links}>

@@ -41,3 +41,28 @@
         opacity: 0.8;
     }
 }
+
+.smallLogo {
+    margin-left: var(--h-gap);
+}
+
+.smallAnimated {
+    margin-left: var(--h-gap);
+    animation: rotateEnter 1s var(--ease-mini-bounce) 1s forwards;
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+    transform: scale(0);
+    opacity: 0.8;
+}
+
+@keyframes rotateEnter {
+    0% {
+        transform: scale(0) rotate(340deg);
+    }
+    80% {
+        transform: scale(1) rotate(360deg);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
