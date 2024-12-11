@@ -67,6 +67,7 @@ export function SearchBar() {
     return (
         <>
             <button
+                aria-label="Search"
                 className={styles.searchBtn}
                 onClick={() => dialogRef.current?.showModal()}
             >

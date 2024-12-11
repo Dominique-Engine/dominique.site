@@ -23,6 +23,7 @@ export function Footer({
                 <div className={styles.social}>
                     {github && (
                         <a
+                            aria-label="Github"
                             className={styles.socialLink}
                             target="_blank"
                             referrerPolicy="no-referrer"
@@ -34,6 +35,7 @@ export function Footer({
                     )}
                     {x && (
                         <a
+                            aria-label="Twitter"
                             className={styles.socialLink}
                             target="_blank"
                             referrerPolicy="no-referrer"
@@ -45,6 +47,7 @@ export function Footer({
                     )}
                     {youtube && (
                         <a
+                            aria-label="Youtube"
                             className={styles.socialLink}
                             target="_blank"
                             referrerPolicy="no-referrer"
@@ -56,6 +59,7 @@ export function Footer({
                     )}
                     {discord && (
                         <a
+                            aria-label="Discord"
                             className={styles.socialLink}
                             target="_blank"
                             referrerPolicy="no-referrer"
