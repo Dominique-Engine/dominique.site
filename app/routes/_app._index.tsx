@@ -88,7 +88,7 @@ export default function Index() {
                         <CardFooterBgEffect />
                         <p className={styles.endBannerText}>
                             Go and{" "}
-                            <Link className={styles.seizeIt} to={"/docs.tsx"}>
+                            <Link className={styles.seizeIt} to={"/docs"}>
                                 seize it
                             </Link>
                         </p>
