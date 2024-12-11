@@ -124,6 +124,9 @@ export default function Index() {
                 </article>
 
                 <article className={styles.article}>
+                    <div className={styles.qr}>
+                        <img src={"/qr.png"} alt="" />
+                    </div>
                     <div className={styles.openingGrid}>
                         <TextBanner
                             title={`Dominique Engine Website`}
@@ -132,6 +135,7 @@ export default function Index() {
                             descriptionHighlights={[]}
                             sectionClassName={styles.banner}
                         />
+
                         <div className={styles.logo}>
                             <img src={"/DEngineNoBg.png"} alt={"Hero"} />
                         </div>
@@ -361,13 +365,13 @@ export default function Index() {
                     </div>
                 </article>
 
-
                 <article className={styles.article}>
                     <div className={styles.gridItem}>
                         <h2>Next</h2>
                         <p>
                             - Showcase projects (A must)
-                            <br />- Versioning to docs (When API gets stable is mandatory)
+                            <br />- Versioning to docs (When API gets stable is
+                            mandatory)
                             <br />- Proper help to build Community
                         </p>
                     </div>
