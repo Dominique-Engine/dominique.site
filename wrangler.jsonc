@@ -6,6 +6,10 @@
     "compatibility_date": "2026-10-22",
     "compatibility_flags": ["nodejs_compat"],
     "workers_dev": true,
+    "routes": [
+        {"pattern": "dengine.site/*", "zone_name": "dengine.site"},
+        {"pattern": "www.dengine.site/*", "zone_name": "dengine.site"}
+    ],
     "secrets": {
         "required": ["API_URL", "DEV_MODE_KEY", "ALGOLIA_APP_ID", "ALGOLIA_SEARCH_API_KEY"]
     },

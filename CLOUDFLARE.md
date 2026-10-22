@@ -53,10 +53,12 @@ Workers Builds configuration:
 - Deploy command: `npm run wrangler -- deploy`.
 - No CMS or Algolia secrets are needed as build variables. Configure the four names above as Worker runtime secrets.
 
-Asset paths remain under `/assets/` and the public directory. The Worker runs first to preserve the canonical `dengine.site` to `www.dengine.site` 308 redirect for every path, then serves assets or invokes Remix. Encoded documentation slugs, Remix data requests, unknown-route 404 responses, and CMS-backed pages retain their behavior. Logs and sampled traces are enabled.
+Asset paths remain under `/assets/` and the public directory. The Worker runs first to preserve the canonical `dengine.site` to `www.dengine.site` 308 redirect for every path, then serves assets or invokes Remix. HTTP requests on both production hostnames redirect to HTTPS; encoded paths and queries are preserved. All responses preserve the previous `Strict-Transport-Security: max-age=63072000` policy. Encoded documentation slugs, Remix data requests, unknown-route 404 responses, and CMS-backed pages retain their behavior. Logs and sampled traces are enabled.
 
 ## Cutover and rollback
 
-Validate the workers.dev candidate before adding the existing custom domains. Keep the Vercel deployment active until both custom domains, TLS, redirects, all documentation/blog/download routes, client navigation, and assets pass checks. Pause Vercel only after those checks. Preserve the previous DNS targets and Vercel deployment for rollback.
+The existing hostnames use Workers Routes: `dengine.site/*` and `www.dengine.site/*` in the `dengine.site` zone. These routes are declared in `wrangler.jsonc`. Cloudflare DNS must proxy both hostnames to an originless placeholder (`A 192.0.2.0`); the Worker handles every request and never contacts that address. Keep those DNS records proxied. This configuration uses routes without `custom_domain: true`, so deployments do not attempt to replace existing DNS records automatically.
+
+Validate the workers.dev candidate before changing the existing hostname DNS records. Keep the Vercel deployment active until both hostnames, TLS, redirects, all documentation/blog/download routes, client navigation, and assets pass checks. Pause Vercel only after those checks. Preserve the previous DNS targets and Vercel deployment for rollback; restoring the previous DNS targets with proxying disabled bypasses the Worker routes.
 
 The migration assessment records baseline behavior. Existing Vercel behavior includes React hydration warnings and an Algolia application whose hostnames no longer resolve; these are separate from the hosting migration.
