@@ -49,7 +49,7 @@ export function SearchBar() {
             return;
         }
         alClient.current
-            .search({
+            .search<SearchResults>({
                 requests: [
                     {
                         indexName: "content_index",
@@ -58,9 +58,10 @@ export function SearchBar() {
                 ],
                 strategy: "stopIfEnoughMatches",
             })
-            .then(res =>
-                setResults(res.results[0].hits as unknown as SearchResults[])
-            )
+            .then(res => {
+                const result = res.results[0];
+                setResults(result && "hits" in result ? result.hits : []);
+            })
             .catch(() => setResults([]));
     }, [debouncedQuery]);
 
