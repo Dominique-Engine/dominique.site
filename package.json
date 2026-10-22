@@ -10,8 +10,13 @@
     "format": "prettier --write .",
     "start": "remix-serve ./build/server/index.js",
     "codegen": "gql-gen --config codegen.ts",
-    "typecheck": "tsc",
-    "plop": "plop"
+    "typecheck": "tsc && tsc -p tsconfig.worker.json",
+    "plop": "plop",
+    "tooling:install": "npm ci --prefix tooling",
+    "wrangler": "node ./tooling/node_modules/wrangler/bin/wrangler.js",
+    "typegen": "npm run wrangler -- types worker-configuration.d.ts --include-runtime false",
+    "preview": "npm run build && npm run wrangler -- dev",
+    "deploy": "npm run build && npm run wrangler -- deploy"
   },
   "dependencies": {
     "@algolia/client-search": "^5.15.0",
@@ -19,6 +24,7 @@
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
+    "@remix-run/server-runtime": "2.15.0",
     "dotenv": "^16.4.5",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",

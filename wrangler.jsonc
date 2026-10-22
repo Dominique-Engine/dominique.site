@@ -1,0 +1,28 @@
+{
+    "$schema": "./tooling/node_modules/wrangler/config-schema.json",
+    "name": "dominique-site",
+    "account_id": "3b3aaff96cd9b76205198a4030053313",
+    "main": "server.ts",
+    "compatibility_date": "2026-10-22",
+    "compatibility_flags": ["nodejs_compat"],
+    "workers_dev": true,
+    "routes": [
+        {"pattern": "dengine.site/*", "zone_name": "dengine.site"},
+        {"pattern": "www.dengine.site/*", "zone_name": "dengine.site"}
+    ],
+    "secrets": {
+        "required": ["API_URL", "DEV_MODE_KEY", "ALGOLIA_APP_ID", "ALGOLIA_SEARCH_API_KEY"]
+    },
+    "assets": {
+        "directory": "./build/client",
+        "binding": "ASSETS",
+        "html_handling": "none",
+        "not_found_handling": "none",
+        "run_worker_first": true
+    },
+    "observability": {
+        "enabled": true,
+        "logs": {"enabled": true, "head_sampling_rate": 1},
+        "traces": {"enabled": true, "head_sampling_rate": 0.01}
+    }
+}
