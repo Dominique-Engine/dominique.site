@@ -14,7 +14,7 @@
     "plop": "plop",
     "tooling:install": "npm ci --prefix tooling",
     "wrangler": "node ./tooling/node_modules/wrangler/bin/wrangler.js",
-    "typegen": "npm run wrangler -- types worker-configuration.d.ts",
+    "typegen": "npm run wrangler -- types worker-configuration.d.ts --include-runtime false",
     "preview": "npm run build && npm run wrangler -- dev",
     "deploy": "npm run build && npm run wrangler -- deploy"
   },
