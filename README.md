@@ -1,5 +1,7 @@
 # Welcome to dominique.site
 
+For Cloudflare Workers deployment and verification, see [CLOUDFLARE.md](./CLOUDFLARE.md).
+
 ## Setup
 
 Create a `.env` file by copying the `.env.example` file and filling in the
